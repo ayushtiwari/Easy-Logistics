@@ -19,12 +19,16 @@ public class Manager {
 
     public void addEmployee(Office office, Employee employee) {
         TransportData.getInstance().addEmployee(employee);
-        office.getEmployeeList().add(employee);
+        if (!office.getEmployeeList().contains(employee)) {
+            office.getEmployeeList().add(0, employee);
+        }
     }
 
     public void addTruck(Office office, Truck truck) {
         TransportData.getInstance().addTruck(truck);
-        office.getTruckList().add(truck);
+        if (!office.getTruckList().contains(truck)) {
+            office.getTruckList().add(0, truck);
+        }
     }
 
     public Truck getTruck(int truckId) {

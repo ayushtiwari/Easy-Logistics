@@ -16,9 +16,14 @@ public class TransportData {
     private List<Consignment> consignmentList = new ArrayList<>();
     private List<Truck> truckList = new ArrayList<>();
 
+    private TransportData() {
+
+    }
+
     public static TransportData getInstance() {
         return instance;
     }
+
 
     public List<Truck> getTruckList() {
         return truckList;
