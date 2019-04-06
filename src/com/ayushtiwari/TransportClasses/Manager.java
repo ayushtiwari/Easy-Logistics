@@ -15,6 +15,8 @@ public class Manager {
         this.name = name;
         this.userName = userName;
         officeList = new ArrayList<>();
+        employeeList = new ArrayList<>();
+        truckList = new ArrayList<>();
     }
 
     public void addOffice(Office office) {

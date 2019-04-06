@@ -8,9 +8,12 @@ public class Employee {
     private String name;
     private Office office;
 
-    public Employee(int employeeId, String name, Office office) {
+    public Employee(int employeeId, String name) {
         this.employeeId = employeeId;
         this.name = name;
+    }
+
+    public void setOffice(Office office) {
         this.office = office;
     }
 
@@ -30,7 +33,7 @@ public class Employee {
         this.name = name;
     }
 
-    private void dispatchTruck(Truck truck) {
+    public void dispatchTruck(Truck truck) {
         truck.setCurrentBranchDepartureTime(LocalDateTime.now());
         truck.getIdleTime()[0] = ChronoUnit.HOURS.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
         truck.getIdleTime()[1] = ChronoUnit.MINUTES.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
@@ -43,7 +46,7 @@ public class Employee {
 
     }
 
-    private void receiveTruck(Truck truck) {
+    public void receiveTruck(Truck truck) {
         truck.setAvailable(true);
         truck.setCurrentOffice(office);
         truck.setCurrentBranchArrivalTime(LocalDateTime.now());
@@ -52,7 +55,7 @@ public class Employee {
 
     }
 
-    private void enterConsignmentDetails(Consignment consignment) {
+    public void enterConsignmentDetails(Consignment consignment) {
         consignment.setArrivalTime(LocalDateTime.now());
         if (office.assignTruck(consignment)) {
             System.out.println("Successful");

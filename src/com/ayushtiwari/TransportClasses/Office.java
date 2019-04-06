@@ -10,11 +10,12 @@ public class Office {
     private List<Truck> truckList;
     private List<Consignment> consignmentList;
 
-    public Office(Address address, List<Employee> employeeList, List<Truck> truckList) {
+    public Office(Address address) {
         this.address = address;
-        this.employeeList = employeeList;
         truckList = new ArrayList<>();
-        this.truckList = truckList;
+        consignmentList = new ArrayList<>();
+        employeeList = new ArrayList<>();
+
     }
 
     public List<Consignment> getConsignmentList() {
