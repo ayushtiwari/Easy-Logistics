@@ -17,15 +17,14 @@ public class Main extends Application {
         launch(args);
     }
 
-    boolean managerExists;
+    boolean managerExists = true;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
         Statement st = conn.createStatement();
         st.execute("SELECT * FROM manager");
         ResultSet results = st.getResultSet();
-        if (results.next()) managerExists = true;
-        else managerExists = false;
+        managerExists = results.next();
 
         //See if manager exists in database, if not
 

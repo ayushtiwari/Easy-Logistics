@@ -1,10 +1,5 @@
 package com.ayushtiwari.TransportClasses;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class Main {
     public static boolean isEMpty;
     public static void main(String[] args) {
@@ -36,15 +31,18 @@ public class Main {
 //
 //        employee.enterConsignmentDetails(consignment
 
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
-            Statement st = conn.createStatement();
-            st.execute("DELETE FROM manager");
-            //st.execute("INSERT INTO manager VALUES('"+managerName+"','"+managerUserName+"','"+managerEmail+"','"+managerPassword+"')");
-        } catch (SQLException e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
-        // "INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')"
+//        try {
+//            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+//            Statement st = conn.createStatement();
+//            st.execute("DELETE FROM manager");
+//            //st.execute("INSERT INTO manager VALUES('"+managerName+"','"+managerUserName+"','"+managerEmail+"','"+managerPassword+"')");
+//        } catch (SQLException e) {
+//            System.out.println("Something went wrong: " + e.getMessage());
+//        }
+//        // "INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')"
+
+
+
 
     }
 }

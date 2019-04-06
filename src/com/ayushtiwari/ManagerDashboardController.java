@@ -76,8 +76,8 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void onViewEmployeeDetailsClick(MouseEvent event) {
-
+    void onViewEmployeeDetailsClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("employeeTable.fxml")));
     }
 
     @FXML
