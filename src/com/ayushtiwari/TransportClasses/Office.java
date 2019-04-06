@@ -9,6 +9,7 @@ public class Office {
     private int officeId;
     private List<Employee> employeeList;
     private List<Truck> truckList;
+    private List<Truck> trucksToBeRecievedList;
     private List<Consignment> consignmentList;
     private List<Customer> customerList;
 
@@ -18,7 +19,16 @@ public class Office {
         consignmentList = new ArrayList<>();
         employeeList = new ArrayList<>();
         customerList = new ArrayList<>();
+        trucksToBeRecievedList = new ArrayList<>();
         this.officeId = officeId;
+    }
+
+    public List<Truck> getTrucksToBeRecievedList() {
+        return trucksToBeRecievedList;
+    }
+
+    public void setTrucksToBeRecievedList(List<Truck> trucksToBeRecievedList) {
+        this.trucksToBeRecievedList = trucksToBeRecievedList;
     }
 
     public int getOfficeId() {
