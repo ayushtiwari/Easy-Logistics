@@ -8,13 +8,18 @@ public class Employee {
     private String name;
     private Office office;
 
-    public Employee(int employeeId, String name) {
+    public Employee(int employeeId, String name, Office office) {
         this.employeeId = employeeId;
         this.name = name;
+        this.office = office;
     }
 
-    public void setOffice(Office office) {
-        this.office = office;
+//    public void setOffice(Office office) {
+//        this.office = office;
+//    }
+
+    public Office getOffice() {
+        return office;
     }
 
     public int getEmployeeId() {
@@ -34,25 +39,29 @@ public class Employee {
     }
 
     public void dispatchTruck(Truck truck) {
-        truck.setCurrentBranchDepartureTime(LocalDateTime.now());
-        truck.getIdleTime()[0] = ChronoUnit.HOURS.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
-        truck.getIdleTime()[1] = ChronoUnit.MINUTES.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
-        office.getTruckList().remove(truck);
+        if (office.getTruckList().contains(truck)) {
+            truck.setCurrentBranchDepartureTime(LocalDateTime.now());
+            truck.getIdleTime()[0] = ChronoUnit.HOURS.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
+            truck.getIdleTime()[1] = ChronoUnit.MINUTES.between(truck.getCurrentBranchArrivalTime(), truck.getCurrentBranchDepartureTime());
+            office.getTruckList().remove(truck);
+        }
 
         for (Consignment c : truck.getConsignmentList()) {
             c.setDepartureTime(LocalDateTime.now());
-            c.setDelivered(true);
+            c.setDispatched(true);
         }
-
     }
 
     public void receiveTruck(Truck truck) {
         truck.setAvailable(true);
         truck.setCurrentOffice(office);
         truck.setCurrentBranchArrivalTime(LocalDateTime.now());
+        for (Consignment c : truck.getConsignmentList()) {
+            c.setDelivered(true);
+            c.setDeliverdTime(LocalDateTime.now());
+        }
         truck.unloadConsignments();
         office.getTruckList().add(0, truck);
-
     }
 
     public void enterConsignmentDetails(Consignment consignment) {

@@ -1,16 +1,18 @@
 package com.ayushtiwari.TransportClasses;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class Consignment {
     private int consignmentId;
-    private int waitingTime;
     private int volume;
     private Customer sender;
     private Customer receiver;
     private boolean isDelivered;
+    private boolean isDispatched;
     private LocalDateTime arrivalTime;
     private LocalDateTime departureTime;
+    private LocalDateTime deliverdTime;
     private Truck truck;
     private Office sendingOffice;
     private Office receivingOffice;
@@ -24,38 +26,39 @@ public class Consignment {
         this.sendingOffice = sendingOffice;
         this.receivingOffice = receivingOffice;
         this.arrivalTime = LocalDateTime.now();
+        this.isDispatched = false;
+    }
+
+    public LocalDateTime getDeliverdTime() {
+        return deliverdTime;
+    }
+
+    public void setDeliverdTime(LocalDateTime deliverdTime) {
+        this.deliverdTime = deliverdTime;
     }
 
     public Office getSendingOffice() {
         return sendingOffice;
     }
 
-    public void setSendingOffice(Office sendingOffice) {
-        this.sendingOffice = sendingOffice;
-    }
 
     public Office getReceivingOffice() {
         return receivingOffice;
     }
 
-    public void setReceivingOffice(Office receivingOffice) {
-        this.receivingOffice = receivingOffice;
-    }
 
     public int getConsignmentId() {
         return consignmentId;
     }
 
-    public void setConsignmentId(int consignmentId) {
-        this.consignmentId = consignmentId;
-    }
 
-    public int getWaitingTime() {
-        return waitingTime;
-    }
-
-    public void setWaitingTime(int waitingTime) {
-        this.waitingTime = waitingTime;
+    public long[] getWaitingTime() {
+        long[] waitingTime = new long[2];
+        if (this.isDelivered()) {
+            waitingTime[0] = ChronoUnit.HOURS.between(this.arrivalTime, this.departureTime);
+            waitingTime[1] = ChronoUnit.MINUTES.between(this.arrivalTime, this.departureTime);
+            return waitingTime;
+        } else return null;
     }
 
     public int getVolume() {
@@ -112,5 +115,14 @@ public class Consignment {
 
     public void setTruck(Truck truck) {
         this.truck = truck;
+    }
+
+
+    public boolean isDispatched() {
+        return isDispatched;
+    }
+
+    public void setDispatched(boolean dispatched) {
+        isDispatched = dispatched;
     }
 }

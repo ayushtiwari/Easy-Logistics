@@ -111,5 +111,8 @@ public class Truck {
 
     public void unloadConsignments() {
         this.consignmentList.clear();
+        this.currentOccupancy = 0;
+        this.isAvailable = true;
+        this.setNextOffice(null);
     }
 }

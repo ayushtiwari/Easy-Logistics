@@ -7,12 +7,14 @@ public class Main {
 
         Office office = new Office(new Address("AlphaBeta", "JingleBell"));
 
-        Employee employee = new Employee(1234, "Supreme");
+        Employee employee = new Employee(1234, "Supreme", office);
 
         manager.addOffice(office);
         manager.addEmployee(office, employee);
+        manager.addTruck(office, new Truck(123, office, 200));
 
-        manager.addTruck(office, new Truck(123, office, 240));
+        System.out.println(employee.getOffice().getTruckList());
+
 
 
     }
