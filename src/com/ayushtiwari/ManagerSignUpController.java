@@ -152,7 +152,7 @@ public class ManagerSignUpController implements Initializable {
             try {
                 Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                 Statement st = conn.createStatement();
-                st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerUserName + "','" + managerEmail + "','" + managerPassword + "')");
+                st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerEmail + "','" + managerUserName + "','" + managerPassword + "')");
             } catch (SQLException e) {
                 System.out.println("Something went wrong: " + e.getMessage());
             }

@@ -14,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.*;
+
 public class ManagerLoginController {
 
     @FXML
@@ -59,6 +61,7 @@ public class ManagerLoginController {
     public void onLogin(ActionEvent event) throws Exception {
         String managerUserName = userName.getText();
         String managerPassword = password.getText();
+        boolean detailsCorrect = false;
 
 
         if (managerUserName.trim().isEmpty() || managerPassword.trim().isEmpty()) {
@@ -68,7 +71,21 @@ public class ManagerLoginController {
             /*
             Check if Password is correct
             */
-            boolean detailsCorrect = true;
+
+
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Statement st = conn.createStatement();
+                st.execute("SELECT * FROM manager");
+                ResultSet results = st.getResultSet();
+                if (managerUserName.equals(results.getString(3)) && managerPassword.equals(results.getString(4)))
+                    detailsCorrect = true;
+                else detailsCorrect = false;
+
+            } catch (SQLException e) {
+                System.out.println("Something went wrong: " + e.getMessage());
+            }
+
 
 
             if (detailsCorrect) {
