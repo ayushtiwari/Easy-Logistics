@@ -17,6 +17,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class ManagerSignUpController implements Initializable {
@@ -144,7 +148,16 @@ public class ManagerSignUpController implements Initializable {
             passwordSameLabel.setText(" ");
 
 
-            //Query Data
+            //Enter data
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Statement st = conn.createStatement();
+                st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerUserName + "','" + managerEmail + "','" + managerPassword + "')");
+            } catch (SQLException e) {
+                System.out.println("Something went wrong: " + e.getMessage());
+            }
+//
+//
 
 
             Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));

@@ -68,16 +68,24 @@ public class ManagerLoginController {
             /*
             Check if Password is correct
             */
+            boolean detailsCorrect = true;
 
-            Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-            Scene dashboardScene = new Scene(dashboard);
-            Stage windowDashboard = new Stage();
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.getOwner().hide();
-            windowDashboard.setScene(dashboardScene);
-            window.setMaxHeight(728);
-            window.setMaxWidth(1366);
-            windowDashboard.show();
+
+            if (detailsCorrect) {
+
+
+                Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
+                Scene dashboardScene = new Scene(dashboard);
+                Stage windowDashboard = new Stage();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.getOwner().hide();
+                windowDashboard.setScene(dashboardScene);
+                window.setMaxHeight(728);
+                window.setMaxWidth(1366);
+                windowDashboard.show();
+            } else {
+
+            }
 
         }
 
