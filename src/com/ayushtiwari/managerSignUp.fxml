@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="605.0"
+            prefWidth="390.0" fx:controller="com.ayushtiwari.ManagerSignUpController"
+            xmlns="http://javafx.com/javafx/8">
+    <children>
+        <Pane layoutX="15.0" layoutY="14.0" prefHeight="578.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
+            <children>
+                <JFXTextField fx:id="name" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="55.0"
+                              prefHeight="40.0" prefWidth="230.0" promptText="Name"/>
+                <JFXTextField fx:id="email" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="134.0"
+                              prefHeight="40.0" prefWidth="230.0" promptText="E-mail"/>
+                <JFXTextField fx:id="userName" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="217.0"
+                              prefHeight="40.0" prefWidth="230.0" promptText="Username"/>
+                <JFXPasswordField fx:id="password" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="299.0"
+                                  prefHeight="40.0" prefWidth="230.0" promptText="Password"/>
+                <JFXPasswordField fx:id="repassword" focusColor="#94b6bc" labelFloat="true" layoutX="61.0"
+                                  layoutY="387.0" prefHeight="40.0" prefWidth="230.0" promptText="Confirm Password"/>
+                <JFXButton fx:id="signUp" buttonType="RAISED" layoutX="103.0" layoutY="480.0" prefHeight="40.0"
+                           prefWidth="146.0" style="-fx-background-color: #2196f3;" text="Sign Up" textFill="WHITE"/>
+            </children>
+            <effect>
+                <DropShadow blurType="GAUSSIAN"/>
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>
