@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" prefHeight="581.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/8.0.171"
-            fx:controller="com.ayushtiwari.EmployeeUI.IndividualConsignmentDisplayController">
+            fx:controller="com.ayushtiwari.EmployeeUI.IndividualTruckDispatchController">
     <children>
         <Pane layoutX="5.0" layoutY="6.0" maxHeight="1.7976931348623157E308" prefHeight="571.0" prefWidth="589.0"
               style="-fx-background-color: white;">
@@ -47,10 +47,10 @@
                                text="a" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                     </children>
                 </GridPane>
-                <JFXButton layoutX="194.0" layoutY="503.0" prefHeight="38.0" prefWidth="201.0"
+                <JFXButton fx:id="dispatchTruck" layoutX="194.0" layoutY="503.0" prefHeight="38.0" prefWidth="201.0"
                            style="-fx-background-color: #f9d348;" text="Dispatch Truck"/>
-                <TableView layoutY="188.0" maxHeight="1.7976931348623157E308" prefHeight="286.0" prefWidth="589.0"
-                           style="-fx-border-color: white;">
+                <TableView fx:id="tableView" layoutY="188.0" maxHeight="1.7976931348623157E308" prefHeight="286.0"
+                           prefWidth="589.0" style="-fx-border-color: white;">
                     <columns>
                         <TableColumn fx:id="consignmentId" prefWidth="296.0" text="Consignment ID"/>
                         <TableColumn fx:id="volume" prefWidth="294.0" text="Volume"/>
