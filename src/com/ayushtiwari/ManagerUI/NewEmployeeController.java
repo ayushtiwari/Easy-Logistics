@@ -133,7 +133,8 @@ public class NewEmployeeController {
 
             //Add Employee To database
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+                //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                 Statement st = conn.createStatement();
                 st.execute("INSERT INTO  employee VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + branch.getValue() + "','" + userName.getText() + "','" + password.getText() + "')");
                 st.execute("SELECT * FROM office");
