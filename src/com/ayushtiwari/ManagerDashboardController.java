@@ -44,6 +44,7 @@ public class ManagerDashboardController {
     @FXML
     private JFXButton viewCustomerDetails;
 
+
     @FXML
     void onAddNewBranchClick(MouseEvent event) throws Exception {
         scrollPane.setContent(FXMLLoader.load(getClass().getResource("newBranch.fxml")));
@@ -85,7 +86,7 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void initialize() {
-
+    void initialize() throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("welcome.fxml")));
     }
 }
