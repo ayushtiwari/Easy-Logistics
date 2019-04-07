@@ -32,8 +32,8 @@ public class EmployeeDashboardController {
     @FXML
     private JFXButton customerContacts;
 
-    public void initialize() {
-
+    public void initialize() throws Exception {
+        scrollPane.setContent((FXMLLoader.load(getClass().getResource("welcome.fxml"))));
     }
 
     @FXML

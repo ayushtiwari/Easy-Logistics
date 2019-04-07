@@ -6,16 +6,26 @@ import java.util.List;
 public class Office {
 
     private Address address;
+    private int officeId;
     private List<Employee> employeeList;
     private List<Truck> truckList;
     private List<Consignment> consignmentList;
 
-    public Office(Address address) {
+    public Office(int officeId, Address address) {
         this.address = address;
         truckList = new ArrayList<>();
         consignmentList = new ArrayList<>();
         employeeList = new ArrayList<>();
+        this.officeId = officeId;
 
+    }
+
+    public int getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId(int officeId) {
+        this.officeId = officeId;
     }
 
     public List<Consignment> getConsignmentList() {

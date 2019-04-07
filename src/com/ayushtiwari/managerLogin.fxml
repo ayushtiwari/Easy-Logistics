@@ -12,25 +12,25 @@
             minWidth="-Infinity" prefHeight="415.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="com.ayushtiwari.ManagerLoginController">
     <children>
-        <Pane layoutX="10.0" layoutY="11.0" prefHeight="393.0" prefWidth="370.0" style="-fx-background-color: #ffffff;">
+        <Pane layoutX="5.0" layoutY="6.0" prefHeight="403.0" prefWidth="379.0" style="-fx-background-color: #ffffff;">
             <children>
-                <JFXTextField fx:id="userName" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="143.0"
+                <JFXTextField fx:id="userName" focusColor="#09b6bc" labelFloat="true" layoutX="75.0" layoutY="145.0"
                               prefHeight="40.0" prefWidth="230.0" promptText="Username"/>
-                <JFXPasswordField fx:id="password" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="229.0"
+                <JFXPasswordField fx:id="password" focusColor="#09b6bc" labelFloat="true" layoutX="75.0" layoutY="229.0"
                                   prefHeight="40.0" prefWidth="230.0" promptText="Password"/>
-                <JFXButton fx:id="signUp" buttonType="RAISED" layoutX="103.0" layoutY="308.0" prefHeight="40.0"
-                           prefWidth="146.0" style="-fx-background-color: #2196f3;" text="Log In" textFill="WHITE"/>
-                <Pane prefHeight="78.0" prefWidth="370.0" style="-fx-background-color: #2196f3;">
+                <JFXButton fx:id="logIn" onAction="#onLogin" buttonType="RAISED" layoutX="117.0" layoutY="309.0"
+                           prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #f9d348;" text="Log In"/>
+                <Pane prefHeight="83.0" prefWidth="379.0" style="-fx-background-color: #f9d348;">
                     <effect>
-                        <DropShadow blurType="GAUSSIAN"/>
+                        <DropShadow blurType="GAUSSIAN" color="WHITE"/>
                     </effect>
                     <children>
-                        <Label layoutX="140.0" layoutY="46.0" text="Logistics" textFill="WHITE">
+                        <Label layoutX="156.0" layoutY="54.0" text="Logistics">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="15.0"/>
                             </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="140.0" layoutY="6.0" text="Swift" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="156.0" layoutY="14.0" text="Swift">
                             <font>
                                 <Font name="Impact" size="32.0"/>
                             </font>

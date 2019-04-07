@@ -13,33 +13,31 @@
             minWidth="-Infinity" prefHeight="460.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="com.ayushtiwari.EmployeeLoginController">
     <children>
-        <Pane layoutX="15.0" layoutY="15.0" prefHeight="434.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
+        <Pane layoutX="6.0" layoutY="5.0" prefHeight="450.0" prefWidth="378.0" style="-fx-background-color: #ffffff;">
             <children>
-                <JFXTextField fx:id="userName" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="210.0"
+                <JFXTextField fx:id="userName" focusColor="#09b6bc" labelFloat="true" layoutX="74.0" layoutY="213.0"
                               prefHeight="40.0" prefWidth="230.0" promptText="Username"/>
-                <JFXPasswordField fx:id="password" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="295.0"
+                <JFXPasswordField fx:id="password" focusColor="#09b6bc" labelFloat="true" layoutX="74.0" layoutY="295.0"
                                   prefHeight="40.0" prefWidth="230.0" promptText="Password"/>
-                <JFXButton fx:id="signUp" buttonType="RAISED" layoutX="103.0" layoutY="363.0" prefHeight="40.0"
-                           prefWidth="146.0" style="-fx-background-color: #2196f3;" text="Log In" textFill="WHITE"/>
-                <JFXComboBox fx:id="branch" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="126.0"
+                <JFXButton fx:id="logIn" buttonType="RAISED" layoutX="116.0" layoutY="363.0" onAction="#onLogin"
+                           prefHeight="40.0" prefWidth="146.0" style="-fx-background-color: #f9d348;" text="Log In"/>
+                <JFXComboBox fx:id="branch" focusColor="#09b6bc" labelFloat="true" layoutX="74.0" layoutY="126.0"
                              prefHeight="40.0" prefWidth="230.0" promptText="Select Branch"/>
-                <Pane prefHeight="78.0" prefWidth="361.0" style="-fx-background-color: #2196f3;">
-                    <effect>
-                        <DropShadow blurType="GAUSSIAN"/>
-                    </effect>
+                <Pane prefHeight="82.0" prefWidth="378.0" style="-fx-background-color: #f9d348;">
                     <children>
-                        <Label layoutX="140.0" layoutY="46.0" text="Logistics" textFill="WHITE">
+                        <Label layoutX="140.0" layoutY="46.0" text="Logistics">
                             <font>
                                 <Font name="Arial Rounded MT Bold" size="15.0"/>
                             </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="140.0" layoutY="6.0" text="Swift" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="140.0" layoutY="6.0" text="Swift">
                             <font>
                                 <Font name="Impact" size="32.0"/>
                             </font>
                         </Label>
                     </children>
                 </Pane>
+                <Label fx:id="incorrectDetails" layoutX="138.0" layoutY="419.0" textFill="RED"/>
             </children>
             <effect>
                 <DropShadow blurType="GAUSSIAN"/>

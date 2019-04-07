@@ -89,4 +89,5 @@ public class ManagerDashboardController {
     void initialize() throws Exception {
         scrollPane.setContent(FXMLLoader.load(getClass().getResource("welcome.fxml")));
     }
+
 }

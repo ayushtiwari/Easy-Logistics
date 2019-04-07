@@ -12,12 +12,30 @@ public class Main extends Application {
         launch(args);
     }
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-        primaryStage.setTitle("Manager Sign Up");
-        primaryStage.setScene(new Scene(root, 1366, 728));
-        primaryStage.setResizable(true);
-        primaryStage.show();
+
+
+        //See if manager exists in database, if not
+
+
+        boolean managerExists = true;
+
+        if (managerExists) {
+            Parent root = FXMLLoader.load(getClass().getResource("welcomeScreen.fxml"));
+            primaryStage.setTitle("Welcome");
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        } else {
+            Parent root = FXMLLoader.load(getClass().getResource("managerSignUp.fxml"));
+            primaryStage.setTitle("Manager Sign Up");
+            primaryStage.setScene(new Scene(root));
+            primaryStage.setResizable(false);
+            primaryStage.show();
+        }
+
     }
 }

@@ -6,9 +6,15 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -102,7 +108,7 @@ public class ManagerSignUpController implements Initializable {
     }
 
     @FXML
-    public void onSignUp() {
+    public void onSignUp(ActionEvent event) throws Exception {
 
         System.out.println("AlphaBeta");
         String managerName = name.getText();
@@ -136,10 +142,15 @@ public class ManagerSignUpController implements Initializable {
         } else if (managerPassword.equals(managerRepassword)) {
             System.out.println("AlphaBeta");
             passwordSameLabel.setText(" ");
-        } else {
 
-            //LogIn Manager
 
+            //Signup manager and show dashboard
+            Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
+            Scene dasboardScene = new Scene(dashboard);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(dasboardScene);
+            window.setFullScreen(true);
+            window.show();
         }
     }
 
