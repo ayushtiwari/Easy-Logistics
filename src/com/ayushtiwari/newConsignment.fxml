@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171">
+    <children>
+        <Pane layoutX="10.0" layoutY="12.0" prefHeight="551.0" prefWidth="880.0" style="-fx-background-color: white;">
+            <children>
+                <Pane prefHeight="78.0" prefWidth="880.0" style="-fx-background-color: #2196f3;">
+                    <effect>
+                        <DropShadow blurType="GAUSSIAN"/>
+                    </effect>
+                    <children>
+                        <Label layoutX="403.0" layoutY="48.0" text="Logistics" textFill="WHITE">
+                            <font>
+                                <Font name="Arial Rounded MT Bold" size="15.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="404.0" layoutY="8.0" text="Swift" textFill="WHITE">
+                            <font>
+                                <Font name="Impact" size="32.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <Label layoutX="354.0" layoutY="94.0" text="New Consignment">
+                    <font>
+                        <Font name="Heiti SC Light" size="20.0"/>
+                    </font>
+                </Label>
+                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="326.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Sender's Name" text="Name">
+                    <font>
+                        <Font name="System Bold" size="13.0"/>
+                    </font>
+                </JFXTextField>
+                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="373.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Sender's Name" text="Street Name"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="326.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Receiver's Name" text="Name"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="373.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Sender's Name" text="Street Name"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="419.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Sender's Name" text="City"/>
+                <Label layoutX="180.0" layoutY="282.0" text="Sender's Details">
+                    <font>
+                        <Font name="Heiti TC Light" size="17.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="583.0" layoutY="282.0" text="Receiver's Details">
+                    <font>
+                        <Font name="Heiti SC Light" size="17.0"/>
+                    </font>
+                </Label>
+                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="419.0" prefHeight="27.0" prefWidth="340.0"
+                              promptText="Sender's Name" text="City"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="180.0" text="Consignment No."/>
+                <JFXTextField focusColor="#09b6bc" layoutX="264.0" layoutY="181.0" text="Volume"/>
+                <JFXButton buttonType="RAISED" layoutX="350.0" layoutY="483.0" prefHeight="40.0" prefWidth="181.0"
+                           style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="181.0" text="Current Office Id"/>
+                <JFXTextField focusColor="#09b6bc" layoutX="674.0" layoutY="181.0" text="Receiving Office Id"/>
+            </children>
+            <effect>
+                <DropShadow/>
+            </effect>
+        </Pane>
+    </children>
+</AnchorPane>
