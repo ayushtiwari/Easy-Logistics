@@ -150,9 +150,12 @@ public class ManagerSignUpController implements Initializable {
 
             //Enter data
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+                //Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                 Statement st = conn.createStatement();
                 st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerEmail + "','" + managerUserName + "','" + managerPassword + "')");
+                st.close();
+                conn.close();
             } catch (SQLException e) {
                 System.out.println("Something went wrong: " + e.getMessage());
             }

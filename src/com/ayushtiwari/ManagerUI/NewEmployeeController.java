@@ -8,6 +8,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
+import java.sql.*;
+
 public class NewEmployeeController {
 
     @FXML
@@ -27,8 +29,6 @@ public class NewEmployeeController {
 
     public void initialize() {
 
-        branch.getItems().add("Alpha");
-
 
         /*
         *   Go to database and get all the branch ID
@@ -39,7 +39,19 @@ public class NewEmployeeController {
         * }
         *
          */
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM office");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                int branchid = results.getInt(1);
 
+                branch.getItems().add(Integer.toString(branchid));
+            }
+        } catch (SQLException s) {
+            System.out.println("Error accessing Database" + s.getMessage());
+        }
 
         RequiredFieldValidator validator = new RequiredFieldValidator();
         employeeId.getValidators().add(validator);
@@ -110,6 +122,7 @@ public class NewEmployeeController {
 
     @FXML
     public void handleSubmit() {
+        String employeelist = "";
         if (employeeId.getText().trim().isEmpty() || password.getText().trim().isEmpty() || userName.getText().isEmpty() || branch.getItems().isEmpty() || name.getText().isEmpty()) {
             if (employeeId.getText().isEmpty()) employeeId.validate();
             if (password.getText().isEmpty()) password.validate();
@@ -119,8 +132,23 @@ public class NewEmployeeController {
         } else {
 
             //Add Employee To database
-
-
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Statement st = conn.createStatement();
+                st.execute("INSERT INTO  employee VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + branch.getValue() + "','" + userName.getText() + "','" + password.getText() + "')");
+                st.execute("SELECT * FROM office");
+                ResultSet results = st.getResultSet();
+                while (results.next()) {
+                    if (results.getInt(1) == Integer.parseInt(branch.getValue()))
+                        employeelist = results.getString(2) + employeeId.getText() + ",";
+                    System.out.println(employeelist);
+                    int officeIdValue = Integer.parseInt(branch.getValue());
+                    //st.execute("INSERT INTO office(employee_list)VALUE('"+employeelist+"') WHERE office_id=Integer.parseInt(branch.getValue())");
+                    st.execute("UPDATE office SET employee_list=('" + employeelist + "') WHERE office_id=('" + officeIdValue + "')");
+                }
+            } catch (SQLException e) {
+                System.out.println("Something went wrong" + e.getMessage());
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setContentText("Employee Successfully Created");
             alert.showAndWait();

@@ -76,13 +76,14 @@ public class NewBranchController {
         } else {
             //Add Branch to database
            try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
-
+               // Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+               Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TrasportCompany//database1.db");
                Statement st = conn.createStatement();
-               st.execute("INSERT INTO office VALUES ('" + branchid + "','NULL','" + streetname + "','" + cityname + "','NULL','NULL')");
+               st.execute("INSERT INTO office VALUES ('" + branchid + "','*','" + streetname + "','" + cityname + "','*','*')");
               // st.execute("INSERT INTO office VALUES (1,'NULL','ehfuef','oiivn','NULL','NULL')");
-
+               st.close();
+               conn.close();
 
 
 
