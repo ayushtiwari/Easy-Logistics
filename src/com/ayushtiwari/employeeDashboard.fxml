@@ -58,7 +58,7 @@
                     <children>
                         <FontAwesomeIconView fill="WHITE" glyphName="HISTORY" size="20"
                                              wrappingWidth="35.15786075592041"/>
-                        <JFXButton fx:id="consignmentHistory" onMouseClicked="#onConsignmentHistroyClicked"
+                        <JFXButton fx:id="consignmentHistory" onMouseClicked="#onConsignmentHistoryClicked"
                                    prefHeight="43.0" prefWidth="173.0" text="Consignment History" textFill="WHITE"/>
                     </children>
                 </HBox>

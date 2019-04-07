@@ -31,8 +31,9 @@ public class EmployeeDashboardController {
     @FXML
     private JFXButton customerContacts;
 
+
     @FXML
-    void onConsignmentHistroyClicked(MouseEvent event) {
+    void onConsignmentHistoryClicked(MouseEvent event) throws Exception {
 
     }
 
