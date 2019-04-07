@@ -8,6 +8,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class NewBranchController {
 
     @FXML
@@ -61,12 +66,30 @@ public class NewBranchController {
 
     @FXML
     public void handleOnSubmit() {
+        String branchid=branchId.getText();
+        String cityname=cityName.getText();
+        String streetname=streetName.getText();
         if (branchId.getText().trim().isEmpty() || cityName.getText().isEmpty() || streetName.getText().isEmpty()) {
             if (branchId.getText().trim().isEmpty()) branchId.validate();
             if (cityName.getText().trim().isEmpty()) cityName.validate();
             if (streetName.getText().trim().isEmpty()) streetName.validate();
         } else {
             //Add Branch to database
+           try {
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+
+               //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TrasportCompany//database1.db");
+               Statement st = conn.createStatement();
+               st.execute("INSERT INTO office VALUES ('" + branchid + "','NULL','" + streetname + "','" + cityname + "','NULL','NULL')");
+              // st.execute("INSERT INTO office VALUES (1,'NULL','ehfuef','oiivn','NULL','NULL')");
+
+
+
+
+           }catch(SQLException e)
+           {
+               System.out.println("Something went wrong: " + e.getMessage());
+           }
 
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

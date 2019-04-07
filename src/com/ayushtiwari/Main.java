@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Main extends Application {
 
@@ -20,11 +17,17 @@ public class Main extends Application {
     boolean managerExists = true;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
-        Statement st = conn.createStatement();
-        st.execute("SELECT * FROM manager");
-        ResultSet results = st.getResultSet();
-        managerExists = results.next();
+      try {
+//        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+
+          Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TrasportCompany//database1.db");
+          Statement st = conn.createStatement();
+          st.execute("SELECT * FROM manager");
+          ResultSet results = st.getResultSet();
+          managerExists = results.next();
+      }catch(SQLException e){
+          System.out.println("Something went wrong: " + e.getMessage());
+      }
 
         //See if manager exists in database, if not
 
