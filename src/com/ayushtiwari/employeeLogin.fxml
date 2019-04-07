@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="460.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="460.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.EmployeeLoginController">
     <children>
         <Pane layoutX="15.0" layoutY="15.0" prefHeight="434.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
             <children>
@@ -20,8 +21,8 @@
                                   prefHeight="40.0" prefWidth="230.0" promptText="Password"/>
                 <JFXButton fx:id="signUp" buttonType="RAISED" layoutX="103.0" layoutY="363.0" prefHeight="40.0"
                            prefWidth="146.0" style="-fx-background-color: #2196f3;" text="Log In" textFill="WHITE"/>
-                <JFXComboBox focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="126.0" prefHeight="40.0"
-                             prefWidth="230.0" promptText="Select Branch"/>
+                <JFXComboBox fx:id="branch" focusColor="#09b6bc" labelFloat="true" layoutX="61.0" layoutY="126.0"
+                             prefHeight="40.0" prefWidth="230.0" promptText="Select Branch"/>
                 <Pane prefHeight="78.0" prefWidth="361.0" style="-fx-background-color: #2196f3;">
                     <effect>
                         <DropShadow blurType="GAUSSIAN"/>

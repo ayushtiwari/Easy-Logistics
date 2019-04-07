@@ -9,27 +9,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.ManagerDashboardController">
     <children>
         <VBox layoutX="-1.0" layoutY="79.0" prefHeight="420.0" prefWidth="287.0" style="-fx-background-color: #f4f4f4;">
             <children>
-                <JFXButton defaultButton="true" prefHeight="134.0" prefWidth="287.0"
+                <JFXButton fx:id="consignmentsButton" prefHeight="134.0" prefWidth="287.0"
                            style="-fx-border-color: lightgray;" text="Consignments">
                     <font>
                         <Font size="20.0"/>
                     </font>
                 </JFXButton>
-                <JFXButton prefHeight="137.0" prefWidth="287.0" style="-fx-border-color: lightgray;" text="Trucks">
+                <JFXButton fx:id="trucksButton" prefHeight="137.0" prefWidth="287.0"
+                           style="-fx-border-color: lightgray;" text="Trucks">
                     <font>
                         <Font size="20.0"/>
                     </font>
                 </JFXButton>
-                <JFXButton prefHeight="142.0" prefWidth="287.0" style="-fx-border-color: lightgray;" text="Employees">
+                <JFXButton fx:id="employeesButton" prefHeight="142.0" prefWidth="287.0"
+                           style="-fx-border-color: lightgray;" text="Employees">
                     <font>
                         <Font size="20.0"/>
                     </font>
                 </JFXButton>
-                <JFXButton prefHeight="134.0" prefWidth="287.0" style="-fx-border-color: lightgray;" text="Todo List">
+                <JFXButton fx:id="todoListButton" prefHeight="134.0" prefWidth="287.0"
+                           style="-fx-border-color: lightgray;" text="Todo List">
                     <font>
                         <Font size="20.0"/>
                     </font>

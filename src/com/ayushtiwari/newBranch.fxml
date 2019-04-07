@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="524.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="524.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.NewBranchController">
     <children>
         <Pane layoutX="10.0" layoutY="11.0" prefHeight="504.0" prefWidth="530.0" style="-fx-background-color: white;">
             <children>
@@ -34,18 +35,18 @@
                         <Font name="Heiti SC Light" size="20.0"/>
                     </font>
                 </Label>
-                <JFXTextField focusColor="#09b6bc" layoutX="73.0" layoutY="166.0" prefHeight="27.0" prefWidth="403.0"
-                              promptText="Sender's Name" text="Branch Id">
+                <JFXTextField fx:id="branchId" focusColor="#09b6bc" layoutX="73.0" layoutY="166.0" prefHeight="27.0"
+                              prefWidth="403.0" promptText="Branch ID">
                     <font>
                         <Font name="System Bold" size="13.0"/>
                     </font>
                 </JFXTextField>
-                <JFXButton buttonType="RAISED" layoutX="175.0" layoutY="415.0" prefHeight="40.0" prefWidth="181.0"
-                           style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="73.0" layoutY="247.0" prefHeight="27.0" prefWidth="403.0"
-                              promptText="Sender's Name" text="Street Name"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="73.0" layoutY="329.0" prefHeight="27.0" prefWidth="403.0"
-                              promptText="Sender's Name" text="City"/>
+                <JFXButton fx:id="submit" buttonType="RAISED" layoutX="175.0" layoutY="415.0" prefHeight="40.0"
+                           prefWidth="181.0" style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
+                <JFXTextField fx:id="streetName" focusColor="#09b6bc" layoutX="73.0" layoutY="247.0" prefHeight="27.0"
+                              prefWidth="403.0" promptText="Street Name"/>
+                <JFXTextField fx:id="cityName" focusColor="#09b6bc" layoutX="73.0" layoutY="329.0" prefHeight="27.0"
+                              prefWidth="403.0" promptText="City"/>
             </children>
             <effect>
                 <DropShadow/>

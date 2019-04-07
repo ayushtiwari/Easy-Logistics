@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="415.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="415.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.ManagerLoginController">
     <children>
         <Pane layoutX="10.0" layoutY="11.0" prefHeight="393.0" prefWidth="370.0" style="-fx-background-color: #ffffff;">
             <children>

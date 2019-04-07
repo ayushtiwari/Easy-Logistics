@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="575.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.NewConsignmentController">
     <children>
         <Pane layoutX="10.0" layoutY="12.0" prefHeight="551.0" prefWidth="880.0" style="-fx-background-color: white;">
             <children>
@@ -33,20 +34,20 @@
                         <Font name="Heiti SC Light" size="20.0"/>
                     </font>
                 </Label>
-                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="326.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Sender's Name" text="Name">
+                <JFXTextField fx:id="senderName" focusColor="#09b6bc" layoutX="75.0" layoutY="326.0" prefHeight="27.0"
+                              prefWidth="340.0" promptText="Name">
                     <font>
                         <Font name="System Bold" size="13.0"/>
                     </font>
                 </JFXTextField>
-                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="373.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Sender's Name" text="Street Name"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="326.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Receiver's Name" text="Name"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="373.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Sender's Name" text="Street Name"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="419.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Sender's Name" text="City"/>
+                <JFXTextField fx:id="senderStreetName" focusColor="#09b6bc" layoutX="75.0" layoutY="373.0"
+                              prefHeight="27.0" prefWidth="340.0" promptText="Street Name"/>
+                <JFXTextField fx:id="receiverName" focusColor="#09b6bc" layoutX="472.0" layoutY="326.0"
+                              prefHeight="27.0" prefWidth="340.0" promptText="Name"/>
+                <JFXTextField fx:id="receiverStreetName" focusColor="#09b6bc" layoutX="472.0" layoutY="373.0"
+                              prefHeight="27.0" prefWidth="340.0" promptText="Street Name"/>
+                <JFXTextField fx:id="senderCity" focusColor="#09b6bc" layoutX="75.0" layoutY="419.0" prefHeight="27.0"
+                              prefWidth="340.0" promptText="City"/>
                 <Label layoutX="180.0" layoutY="282.0" text="Sender's Details">
                     <font>
                         <Font name="Heiti TC Light" size="17.0"/>
@@ -57,13 +58,15 @@
                         <Font name="Heiti SC Light" size="17.0"/>
                     </font>
                 </Label>
-                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="419.0" prefHeight="27.0" prefWidth="340.0"
-                              promptText="Sender's Name" text="City"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="75.0" layoutY="180.0" text="Consignment No."/>
-                <JFXTextField focusColor="#09b6bc" layoutX="264.0" layoutY="181.0" text="Volume"/>
+                <JFXTextField fx:id="receiverCity" focusColor="#09b6bc" layoutX="472.0" layoutY="419.0"
+                              prefHeight="27.0" prefWidth="340.0" promptText="City"/>
+                <JFXTextField fx:id="consignment" focusColor="#09b6bc" layoutX="75.0" layoutY="180.0"
+                              promptText="Consignment ID"/>
+                <JFXTextField fx:id="volume" focusColor="#09b6bc" layoutX="264.0" layoutY="181.0" promptText="Volume"/>
                 <JFXButton buttonType="RAISED" layoutX="350.0" layoutY="483.0" prefHeight="40.0" prefWidth="181.0"
                            style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="472.0" layoutY="181.0" text="Current Office Id"/>
+                <JFXTextField fx:id="currentOfficeId" focusColor="#09b6bc" layoutX="472.0" layoutY="181.0"
+                              promptText="Current Office ID"/>
                 <JFXTextField focusColor="#09b6bc" layoutX="674.0" layoutY="181.0" text="Receiving Office Id"/>
             </children>
             <effect>

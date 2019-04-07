@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="530.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171">
+            minWidth="-Infinity" prefHeight="530.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.NewTruckController">
     <children>
         <Pane layoutX="10.0" layoutY="11.0" prefHeight="507.0" prefWidth="530.0" style="-fx-background-color: white;">
             <children>
@@ -35,17 +36,18 @@
                         <Font name="Heiti SC Light" size="20.0"/>
                     </font>
                 </Label>
-                <JFXTextField focusColor="#09b6bc" layoutX="73.0" layoutY="166.0" prefHeight="27.0" prefWidth="403.0"
-                              promptText="Sender's Name" text="Truck Id">
+                <JFXTextField fx:id="truckId" focusColor="#09b6bc" layoutX="73.0" layoutY="166.0" prefHeight="27.0"
+                              prefWidth="403.0" promptText="Truck ID">
                     <font>
                         <Font name="System Bold" size="13.0"/>
                     </font>
                 </JFXTextField>
                 <JFXButton buttonType="RAISED" layoutX="175.0" layoutY="418.0" prefHeight="40.0" prefWidth="181.0"
                            style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
-                <JFXTextField focusColor="#09b6bc" layoutX="73.0" layoutY="247.0" prefHeight="27.0" prefWidth="403.0"
-                              promptText="Sender's Name" text="Name"/>
-                <JFXComboBox layoutX="73.0" layoutY="333.0" prefHeight="27.0" prefWidth="403.0" promptText="Branch"/>
+                <JFXTextField fx:id="capacity" focusColor="#09b6bc" layoutX="73.0" layoutY="247.0" prefHeight="27.0"
+                              prefWidth="403.0" promptText="Capacity"/>
+                <JFXComboBox fx:id="branch" layoutX="73.0" layoutY="333.0" prefHeight="27.0" prefWidth="403.0"
+                             promptText="Branch"/>
             </children>
             <effect>
                 <DropShadow/>
