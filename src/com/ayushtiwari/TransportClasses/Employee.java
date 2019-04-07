@@ -12,6 +12,7 @@ public class Employee {
         this.employeeId = employeeId;
         this.name = name;
         this.office = office;
+        office.getEmployeeList().add(this);
     }
 
 //    public void setOffice(Office office) {
@@ -53,15 +54,19 @@ public class Employee {
     }
 
     public void receiveTruck(Truck truck) {
-        truck.setAvailable(true);
-        truck.setCurrentOffice(office);
-        truck.setCurrentBranchArrivalTime(LocalDateTime.now());
-        for (Consignment c : truck.getConsignmentList()) {
-            c.setDelivered(true);
-            c.setDeliverdTime(LocalDateTime.now());
+        if (truck.getNextOffice() == this.office) {
+            truck.setAvailable(true);
+            truck.setCurrentOffice(office);
+            truck.setCurrentBranchArrivalTime(LocalDateTime.now());
+            for (Consignment c : truck.getConsignmentList()) {
+                c.setDelivered(true);
+                c.setDeliverdTime(LocalDateTime.now());
+            }
+            truck.unloadConsignments();
+            office.getTruckList().add(0, truck);
+        } else {
+            System.out.println("Cannot receive Truck in this office");
         }
-        truck.unloadConsignments();
-        office.getTruckList().add(0, truck);
     }
 
     public void enterConsignmentDetails(Consignment consignment) {

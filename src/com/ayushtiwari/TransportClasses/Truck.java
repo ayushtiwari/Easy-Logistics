@@ -1,6 +1,7 @@
 package com.ayushtiwari.TransportClasses;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Truck {
@@ -23,6 +24,7 @@ public class Truck {
         this.isAvailable = true;
         this.currentOccupancy = 0;
         this.currentBranchArrivalTime = LocalDateTime.now();
+        consignmentList = new ArrayList<>();
         idleTime = new long[2];
     }
 

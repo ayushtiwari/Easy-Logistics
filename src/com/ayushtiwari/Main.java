@@ -14,10 +14,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("managerSignUp.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
         primaryStage.setTitle("Manager Sign Up");
         primaryStage.setScene(new Scene(root, 390, 605));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
     }
 }
