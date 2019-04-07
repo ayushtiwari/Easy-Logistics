@@ -66,4 +66,18 @@ public class TransportData {
     public void addConsignment(Consignment consignment) {
         consignmentList.add(consignment);
     }
+
+
+//    public Employee loadEmployee(int employeeId) {
+//        //load employee
+//    }
+//    public Office loadOffice(int officeId) {
+//        //load office
+//    }
+//    public Truck loadTruck(int truckId) {
+//        //load truck
+//    }
+
+
+
 }

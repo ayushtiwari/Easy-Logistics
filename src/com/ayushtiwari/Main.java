@@ -14,9 +14,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("managerLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("employeeDashboard.fxml"));
         primaryStage.setTitle("Manager Sign Up");
-        primaryStage.setScene(new Scene(root, 390, 605));
+        primaryStage.setScene(new Scene(root, 1366, 728));
         primaryStage.setResizable(true);
         primaryStage.show();
     }

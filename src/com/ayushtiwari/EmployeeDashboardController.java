@@ -1,20 +1,69 @@
 package com.ayushtiwari;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 
 public class EmployeeDashboardController {
 
-    @FXML
-    private JFXButton consignmentsButton;
 
     @FXML
-    private JFXButton trucksButton;
+    private ScrollPane scrollPane;
+
+    @FXML
+    private JFXButton dispatchTruck;
+
+    @FXML
+    private JFXButton receiveTruck;
+
+    @FXML
+    private JFXButton newConsignment;
+
+    @FXML
+    private JFXButton consignmentHistory;
+
+    @FXML
+    private JFXButton printBill;
 
     @FXML
     private JFXButton customerContacts;
 
     @FXML
-    private JFXButton todoListButton;
+    void onConsignmentHistroyClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onCustomerContactsClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onDispatchTruckClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onNewConsignmentClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("newConsignment.fxml")));
+    }
+
+    @FXML
+    void onPrintBillClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onReceiveTruckClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onTodoListClicked(MouseEvent event) {
+
+    }
 
 }

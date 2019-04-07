@@ -9,34 +9,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="530.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171"
+            minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="com.ayushtiwari.NewTruckController">
     <children>
-        <Pane layoutX="10.0" layoutY="11.0" prefHeight="507.0" prefWidth="530.0" style="-fx-background-color: white;">
+        <Pane layoutX="280.0" layoutY="49.0" prefHeight="507.0" prefWidth="530.0" style="-fx-background-color: white;"
+              AnchorPane.leftAnchor="280.0">
             <children>
-                <Pane prefHeight="78.0" prefWidth="530.0" style="-fx-background-color: #2196f3;">
-                    <effect>
-                        <DropShadow blurType="GAUSSIAN"/>
-                    </effect>
-                    <children>
-                        <Label layoutX="231.0" layoutY="48.0" text="Logistics" textFill="WHITE">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="15.0"/>
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="232.0" layoutY="8.0" text="Swift" textFill="WHITE">
-                            <font>
-                                <Font name="Impact" size="32.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-                <Label layoutX="215.0" layoutY="104.0" text="New Truck">
+                <Label layoutX="215.0" layoutY="67.0" text="New Truck">
                     <font>
                         <Font name="Heiti SC Light" size="20.0"/>
                     </font>
                 </Label>
-                <JFXTextField fx:id="truckId" focusColor="#09b6bc" layoutX="73.0" layoutY="166.0" prefHeight="27.0"
+                <JFXTextField fx:id="truckId" focusColor="#09b6bc" layoutX="73.0" layoutY="148.0" prefHeight="27.0"
                               prefWidth="403.0" promptText="Truck ID">
                     <font>
                         <Font name="System Bold" size="13.0"/>
@@ -44,13 +28,13 @@
                 </JFXTextField>
                 <JFXButton buttonType="RAISED" layoutX="175.0" layoutY="418.0" prefHeight="40.0" prefWidth="181.0"
                            style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
-                <JFXTextField fx:id="capacity" focusColor="#09b6bc" layoutX="73.0" layoutY="247.0" prefHeight="27.0"
+                <JFXTextField fx:id="capacity" focusColor="#09b6bc" layoutX="73.0" layoutY="240.0" prefHeight="27.0"
                               prefWidth="403.0" promptText="Capacity"/>
-                <JFXComboBox fx:id="branch" layoutX="73.0" layoutY="333.0" prefHeight="27.0" prefWidth="403.0"
+                <JFXComboBox fx:id="branch" layoutX="73.0" layoutY="324.0" prefHeight="27.0" prefWidth="403.0"
                              promptText="Branch"/>
             </children>
             <effect>
-                <DropShadow/>
+                <DropShadow blurType="GAUSSIAN"/>
             </effect>
         </Pane>
     </children>

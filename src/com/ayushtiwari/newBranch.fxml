@@ -8,29 +8,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="524.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/8.0.171"
+            minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171"
             fx:controller="com.ayushtiwari.NewBranchController">
     <children>
-        <Pane layoutX="10.0" layoutY="11.0" prefHeight="504.0" prefWidth="530.0" style="-fx-background-color: white;">
+        <Pane layoutX="271.0" layoutY="54.0" prefHeight="504.0" prefWidth="530.0" style="-fx-background-color: white;">
             <children>
-                <Pane prefHeight="78.0" prefWidth="530.0" style="-fx-background-color: #2196f3;">
-                    <effect>
-                        <DropShadow blurType="GAUSSIAN"/>
-                    </effect>
-                    <children>
-                        <Label layoutX="231.0" layoutY="48.0" text="Logistics" textFill="WHITE">
-                            <font>
-                                <Font name="Arial Rounded MT Bold" size="15.0"/>
-                            </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="232.0" layoutY="8.0" text="Swift" textFill="WHITE">
-                            <font>
-                                <Font name="Impact" size="32.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-                <Label layoutX="207.0" layoutY="109.0" text="New Branch">
+                <Label layoutX="209.0" layoutY="81.0" text="New Branch">
                     <font>
                         <Font name="Heiti SC Light" size="20.0"/>
                     </font>
