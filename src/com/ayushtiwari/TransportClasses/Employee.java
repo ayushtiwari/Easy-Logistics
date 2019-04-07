@@ -7,17 +7,30 @@ public class Employee {
     private int employeeId;
     private String name;
     private Office office;
+    private String userName;
+    private String passWord;
 
-    public Employee(int employeeId, String name, Office office) {
+    public Employee(int employeeId, String name, Office office, String userName, String passWord) {
         this.employeeId = employeeId;
         this.name = name;
         this.office = office;
+        this.userName = userName;
+        this.passWord = passWord;
         office.getEmployeeList().add(this);
     }
 
 //    public void setOffice(Office office) {
 //        this.office = office;
 //    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
 
     public Office getOffice() {
         return office;
