@@ -85,7 +85,7 @@ public class EmployeeLoginController {
 
         String employeeBranch = branch.getValue();
         String employeeUserName = userName.getText();
-        String employeePassWord = userName.getText();
+        String employeePassWord = password.getText();
 
         if (employeeUserName.trim().isEmpty() || employeePassWord.trim().isEmpty()) {
             System.out.println("Empty TextBox");

@@ -150,7 +150,7 @@ public class ManagerSignUpController implements Initializable {
 
             //Enter data
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite: /Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
                 Statement st = conn.createStatement();
                 st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerEmail + "','" + managerUserName + "','" + managerPassword + "')");
             } catch (SQLException e) {
@@ -161,12 +161,14 @@ public class ManagerSignUpController implements Initializable {
 
 
             Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-            Scene dasboardScene = new Scene(dashboard);
+            Scene dashboardScene = new Scene(dashboard);
+            Stage dashboardWindow = new Stage();
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(dasboardScene);
-            window.setMaxHeight(728);
-            window.setMaxWidth(1366);
-            window.show();
+            window.getOwner().hide();
+            dashboardWindow.setScene(dashboardScene);
+            dashboardWindow.setMaxHeight(728);
+            dashboardWindow.setMaxWidth(1366);
+            dashboardWindow.show();
         }
     }
 

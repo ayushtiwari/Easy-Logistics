@@ -74,13 +74,11 @@ public class ManagerLoginController {
 
 
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
                 Statement st = conn.createStatement();
                 st.execute("SELECT * FROM manager");
                 ResultSet results = st.getResultSet();
-                if (managerUserName.equals(results.getString(3)) && managerPassword.equals(results.getString(4)))
-                    detailsCorrect = true;
-                else detailsCorrect = false;
+                detailsCorrect = managerUserName.equals(results.getString(3)) && managerPassword.equals(results.getString(4));
 
             } catch (SQLException e) {
                 System.out.println("Something went wrong: " + e.getMessage());

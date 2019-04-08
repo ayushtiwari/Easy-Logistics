@@ -22,7 +22,8 @@
                         <Font name="System Bold" size="13.0"/>
                     </font>
                 </JFXTextField>
-                <JFXButton buttonType="RAISED" layoutX="174.0" layoutY="521.0" prefHeight="40.0" prefWidth="181.0"
+                <JFXButton buttonType="RAISED" onAction="#handleSubmit" layoutX="174.0" layoutY="521.0"
+                           prefHeight="40.0" prefWidth="181.0"
                            style="-fx-background-color: #2196f3;" text="Submit" textFill="WHITE"/>
                 <JFXTextField fx:id="name" focusColor="#09b6bc" layoutX="73.0" layoutY="191.0" prefHeight="27.0"
                               prefWidth="403.0" promptText="Name"/>
