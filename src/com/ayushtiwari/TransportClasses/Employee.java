@@ -73,7 +73,7 @@ public class Employee {
             truck.setCurrentBranchArrivalTime(LocalDateTime.now());
             for (Consignment c : truck.getConsignmentList()) {
                 c.setDelivered(true);
-                c.setDeliverdTime(LocalDateTime.now());
+                c.setDeliveredTime(LocalDateTime.now());
             }
             truck.unloadConsignments();
             office.getTruckList().add(0, truck);

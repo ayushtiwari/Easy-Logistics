@@ -113,9 +113,8 @@ public class EmployeeLoginController {
 
                 windowDashboard.setTitle("Dashboard - " + TransportData.getInstance().getCurrentEmployee().getName());
                 windowDashboard.setScene(dashboard);
-                windowDashboard.setFullScreen(true);
-                windowDashboard.setResizable(false);
-
+                window.setMaxHeight(728);
+                window.setMaxWidth(1366);
                 windowDashboard.show();
 
             } else {

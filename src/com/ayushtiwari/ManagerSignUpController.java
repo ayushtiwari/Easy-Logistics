@@ -144,12 +144,15 @@ public class ManagerSignUpController implements Initializable {
             passwordSameLabel.setText(" ");
 
 
-            //Signup manager and show dashboard
+            //Query Data
+
+
             Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
             Scene dasboardScene = new Scene(dashboard);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(dasboardScene);
-            window.setFullScreen(true);
+            window.setMaxHeight(728);
+            window.setMaxWidth(1366);
             window.show();
         }
     }

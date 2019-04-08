@@ -12,7 +12,7 @@ public class Consignment {
     private boolean isDispatched;
     private LocalDateTime arrivalTime;
     private LocalDateTime departureTime;
-    private LocalDateTime deliverdTime;
+    private LocalDateTime deliveredTime;
     private Truck truck;
     private Office sendingOffice;
     private Office receivingOffice;
@@ -29,12 +29,12 @@ public class Consignment {
         this.isDispatched = false;
     }
 
-    public LocalDateTime getDeliverdTime() {
-        return deliverdTime;
+    public LocalDateTime getDeliveredTime() {
+        return deliveredTime;
     }
 
-    public void setDeliverdTime(LocalDateTime deliverdTime) {
-        this.deliverdTime = deliverdTime;
+    public void setDeliveredTime(LocalDateTime deliveredTime) {
+        this.deliveredTime = deliveredTime;
     }
 
     public Office getSendingOffice() {

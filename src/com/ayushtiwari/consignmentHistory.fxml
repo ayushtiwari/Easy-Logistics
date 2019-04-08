@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.*?>
-<JFXTreeTableView xmlns:fx="http://javafx.com/fxml/1" maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-                  minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1075.0"
-                  xmlns="http://javafx.com/javafx/8.0.171">
-    <columns>
-        <TreeTableColumn fx:id="sno" prefWidth="50.0" text="SNo."/>
-        <TreeTableColumn fx:id="consignmentID" prefWidth="205.0" sortable="false" text="Consignment ID"/>
-        <TreeTableColumn fx:id="receivingOffice" prefWidth="203.0" text="Receiving Office"/>
-        <TreeTableColumn fx:id="volume" prefWidth="203.0" text="Volume"/>
-        <TreeTableColumn fx:id="truckID" prefWidth="203.0" text="Truck ID"/>
-        <TreeTableColumn fx:id="revenue" prefWidth="205.0" text="Revenue"/>
-    </columns>
-</JFXTreeTableView>
+<?import javafx.scene.layout.FlowPane?>
+<FlowPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171"
+          fx:controller="com.ayushtiwari.ConsignmentHistoryController">
+    <children>
+        <TableView maxHeight="1.7976931348623157E308" prefHeight="651.0" prefWidth="1080.0">
+            <columns>
+                <TableColumn prefWidth="120.0" text="C1"/>
+                <TableColumn minWidth="0.0" prefWidth="250.0" text="C2"/>
+                <TableColumn prefWidth="200.0" text="Column X"/>
+                <TableColumn prefWidth="200.0" text="Column X"/>
+                <TableColumn prefWidth="155.0" text="Column X"/>
+                <TableColumn prefWidth="155.0" text="Column X"/>
+            </columns>
+        </TableView>
+    </children>
+</FlowPane>

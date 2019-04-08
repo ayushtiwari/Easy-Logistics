@@ -75,7 +75,8 @@ public class ManagerLoginController {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.getOwner().hide();
             windowDashboard.setScene(dashboardScene);
-            windowDashboard.setFullScreen(true);
+            window.setMaxHeight(728);
+            window.setMaxWidth(1366);
             windowDashboard.show();
 
         }

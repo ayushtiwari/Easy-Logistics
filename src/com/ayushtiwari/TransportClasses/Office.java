@@ -10,14 +10,15 @@ public class Office {
     private List<Employee> employeeList;
     private List<Truck> truckList;
     private List<Consignment> consignmentList;
+    private List<Customer> customerList;
 
     public Office(int officeId, Address address) {
         this.address = address;
         truckList = new ArrayList<>();
         consignmentList = new ArrayList<>();
         employeeList = new ArrayList<>();
+        customerList = new ArrayList<>();
         this.officeId = officeId;
-
     }
 
     public int getOfficeId() {
