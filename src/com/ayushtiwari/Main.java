@@ -21,21 +21,26 @@ public class Main extends Application {
 
 
         boolean managerExists = true;
-
-        if (managerExists) {
-            Parent root = FXMLLoader.load(getClass().getResource("welcomeScreen.fxml"));
-            primaryStage.setTitle("Welcome");
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        } else {
-            Parent root = FXMLLoader.load(getClass().getResource("managerSignUp.fxml"));
-            primaryStage.setTitle("Manager Sign Up");
-            primaryStage.setScene(new Scene(root));
-            primaryStage.setResizable(false);
-            primaryStage.show();
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("welcomeScreen.fxml"));
+        primaryStage.setTitle("Welcome");
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
+//        if (managerExists) {
+//            Parent root = FXMLLoader.load(getClass().getResource("welcomeScreen.fxml"));
+//            primaryStage.setTitle("Welcome");
+//            Scene scene = new Scene(root);
+//            primaryStage.setScene(scene);
+//            primaryStage.setResizable(false);
+//            primaryStage.show();
+//        } else {
+//            Parent root = FXMLLoader.load(getClass().getResource("managerSignUp.fxml"));
+//            primaryStage.setTitle("Manager Sign Up");
+//            primaryStage.setScene(new Scene(root));
+//            primaryStage.setResizable(false);
+//            primaryStage.show();
+//        }
 
     }
 }

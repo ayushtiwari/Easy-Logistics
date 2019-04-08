@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.ayushtiwari.IndividualConsignmentDisplayController">
+    <children>
+        <Pane layoutX="5.0" layoutY="6.0" prefHeight="489.0" prefWidth="589.0" style="-fx-background-color: white;">
+            <children>
+                <Label alignment="CENTER" layoutY="-1.0" prefHeight="60.0" prefWidth="589.0"
+                       style="-fx-background-color: #f9d348;" text="Consignment Details" underline="true">
+                    <font>
+                        <Font name="Heiti SC Light" size="21.0"/>
+                    </font>
+                </Label>
+                <GridPane layoutX="64.0" layoutY="77.0" prefHeight="324.0" prefWidth="462.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Consignment ID">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Dispatching Branch" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Receiving Branch" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Sender's Name" GridPane.rowIndex="4">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Sender's Address" GridPane.rowIndex="5">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Receiver's Name" GridPane.rowIndex="6">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Receiver's Address" GridPane.rowIndex="7">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Volume" GridPane.rowIndex="8">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Truck Alloted" GridPane.rowIndex="9">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Date " GridPane.rowIndex="1">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Dispatch Date" GridPane.rowIndex="10">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Dispatch Time" GridPane.rowIndex="11">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" text="Delivery Status" GridPane.rowIndex="12">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="consignmentId" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="date" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="dispatchingBranch" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="receivingBranch" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="senderName" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="senderAddress" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="receiverName" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="receiverAddress" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="volume" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="truckAlloted" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="dispatchDate" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="dispatchTime" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="deliveryStatus" contentDisplay="CENTER" prefHeight="30.0" prefWidth="229.0"
+                               style="-fx-padding: 10;" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </GridPane>
+                <JFXButton layoutX="194.0" layoutY="419.0" prefHeight="38.0" prefWidth="201.0"
+                           style="-fx-background-color: #f9d348;" text="Okay"/>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

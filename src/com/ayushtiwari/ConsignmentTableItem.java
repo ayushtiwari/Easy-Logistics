@@ -35,6 +35,15 @@ public class ConsignmentTableItem {
 
     }
 
+    public ConsignmentTableItem(String id, String sendersName, String sendingOfficeId, String receivingOfficeId, String isDelivered, String isDispatched) {
+        this.id = new SimpleStringProperty(id);
+        this.sendersName = new SimpleStringProperty(sendersName);
+        this.sendingOfficeId = new SimpleStringProperty(sendingOfficeId);
+        this.receivingOfficeId = new SimpleStringProperty(receivingOfficeId);
+        this.isDelivered = new SimpleStringProperty(isDelivered);
+        this.isDispatched = new SimpleStringProperty(isDispatched);
+    }
+
     public String getIsDispatched() {
         return isDispatched.get();
     }
