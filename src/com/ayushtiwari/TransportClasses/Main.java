@@ -1,6 +1,7 @@
 package com.ayushtiwari.TransportClasses;
 
 public class Main {
+    public static boolean isEMpty;
     public static void main(String[] args) {
 
 //        Manager manager = new Manager("Sanjay Gupta", "sanjaygupta");
@@ -28,7 +29,19 @@ public class Main {
 //
 //        employee1.receiveTruck(TransportData.getInstance().getTruckById(123));
 //
-//        employee.enterConsignmentDetails(consignment);
+//        employee.enterConsignmentDetails(consignment
+
+//        try {
+//            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+//            Statement st = conn.createStatement();
+//            st.execute("DELETE FROM manager");
+//            //st.execute("INSERT INTO manager VALUES('"+managerName+"','"+managerUserName+"','"+managerEmail+"','"+managerPassword+"')");
+//        } catch (SQLException e) {
+//            System.out.println("Something went wrong: " + e.getMessage());
+//        }
+//        // "INSERT INTO `time_entry`(pid,tid,rid,tspend,description) VALUE ('"+pid+"','"+tid+"','"+rid+"',"+tspent+",'"+des+"')"
+
+
 
 
     }
