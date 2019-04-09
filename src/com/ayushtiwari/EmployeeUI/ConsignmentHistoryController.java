@@ -82,6 +82,7 @@ public class ConsignmentHistoryController implements Initializable {
             return row;
         });
 
+
     }
 
     public ObservableList<ConsignmentTableItem> getConsignments() {

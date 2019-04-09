@@ -72,8 +72,8 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void onViewCustomerDetailsClick(MouseEvent event) {
-
+    void onViewCustomerDetailsClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("customerTable.fxml")));
     }
 
     @FXML
@@ -82,8 +82,8 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void onViewTruckStatusClick(MouseEvent event) {
-
+    void onViewTruckStatusClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("truckTable.fxml")));
     }
 
     @FXML

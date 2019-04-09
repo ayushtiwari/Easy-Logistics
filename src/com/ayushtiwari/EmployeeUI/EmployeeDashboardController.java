@@ -48,7 +48,8 @@ public class EmployeeDashboardController {
     }
 
     @FXML
-    void onCustomerContactsClicked(MouseEvent event) {
+    void onCustomerContactsClicked(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("customerTable.fxml")));
         consignmentHistory.setTextFill(Color.WHITE);
         dispatchTruck.setTextFill(Color.WHITE);
         printBill.setTextFill(Color.WHITE);

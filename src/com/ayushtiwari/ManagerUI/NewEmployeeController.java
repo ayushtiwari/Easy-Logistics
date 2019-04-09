@@ -40,7 +40,7 @@ public class NewEmployeeController {
         *
          */
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
             Statement st = conn.createStatement();
             st.execute("SELECT * FROM office");
             ResultSet results = st.getResultSet();
