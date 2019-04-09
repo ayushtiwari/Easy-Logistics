@@ -214,3 +214,36 @@ try {
         }catch(SQLException e){
          System.out.println("something went wrong");
         }
+
+
+
+//latest 1
+try{
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+        Statement st=conn.createStatement;
+        st.execute("SELECT * FROM office");
+        ResultSet results = st.getResultSet();
+ while(results.next()){
+  if(branchid==results.getString(1))
+        consignmentlist=results.getString(6);
+ }
+        st.execute("SELECT * FROM consignment");
+        ResultSet results1=st.getResultSet();
+        while(results1.next()){
+            if(results1.getInt(1) belongs to consignmentlist){
+                System.out.println(results1.getInt(1));  //consignemntidd
+        System.out.println(results1.getText(3));  //sendername
+        System.out.println(results1.getText(9));  //dispatch status
+        System.out.println(results1.getText(10));  //deliverystatus
+        System.out.println(results1.getText(14));//sendingofficeid
+        System.out.println(results1.getText(15)); //receivingofficeid
+        System.out.println(results1,getText(5));//seder city
+        System.out.println(results1.getText(8);//receiver city
+
+        }
+        }
+
+
+        }catch(SQLException e){
+        System.out.println("Something went wrong: " + e.getMessage());  
+        }
