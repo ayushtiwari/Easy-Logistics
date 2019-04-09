@@ -31,7 +31,7 @@ public class WelcomeController {
 
     @FXML
     void onEmployeeLoginClick(ActionEvent event) throws Exception {
-        Parent employeeLogin = FXMLLoader.load(getClass().getResource("employeeLogin.fxml"));
+        Parent employeeLogin = FXMLLoader.load(getClass().getResource("EmployeeUI/employeeLogin.fxml"));
         Scene loginScreen = new Scene(employeeLogin);
         Stage window = new Stage();
         window.setTitle("Employee Login");
@@ -44,7 +44,7 @@ public class WelcomeController {
     @FXML
     void onManagerLoginClick(ActionEvent event) throws Exception {
         System.out.println("a");
-        Parent managerLogin = FXMLLoader.load(getClass().getResource("managerLogin.fxml"));
+        Parent managerLogin = FXMLLoader.load(getClass().getResource("ManagerUI/managerLogin.fxml"));
         System.out.println("a");
         Scene loginScreen = new Scene(managerLogin);
         System.out.println("a");
@@ -61,7 +61,7 @@ public class WelcomeController {
     @FXML
     void handleEnterKey(KeyEvent event) throws Exception {
         if (event.getCode() == KeyCode.ENTER && event.getSource() == managerLogin) {
-            Parent managerLogin = FXMLLoader.load(getClass().getResource("managerLogin.fxml"));
+            Parent managerLogin = FXMLLoader.load(getClass().getResource("ManagerUI/managerLogin.fxml"));
             Scene loginScreen = new Scene(managerLogin);
             Stage window = new Stage();
             window.setTitle("Manager Login");
@@ -72,7 +72,7 @@ public class WelcomeController {
             window.show();
         } else {
             if (event.getCode() == KeyCode.ENTER && event.getSource() == employeeLogin) {
-                Parent employeeLogin = FXMLLoader.load(getClass().getResource("employeeLogin.fxml"));
+                Parent employeeLogin = FXMLLoader.load(getClass().getResource("EmployeeUI/employeeLogin.fxml"));
                 Scene loginScreen = new Scene(employeeLogin);
                 Stage window = new Stage();
                 window.setTitle("Employee Login");
