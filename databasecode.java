@@ -58,7 +58,18 @@
 
 
 //new consignment
-
+ int truckid=12;
+        try{
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+            Statement st = conn.createStatement();
+            st.execute("INSERT INTO consignment('"+consignment.getText()+"','"+volume.getText()+"','"+senderName
+        .getText()+"','"+senderStreetName.getText()+"','"+senderCity.getText()+"','"+receiverName
+        .getText()+"','"+receiverStreetName.getText()+"','"+receiverCity+"','NOT DISPATCHED','NOT DELIVERED','NULL','NULL','NULL','"+currentOfficeId.getText()+"','"+nextOffice.getText()+"','"+truckid+"')");
+        st.close();
+        conn.close();
+        }catch(SQLException e){
+            System.out.println("Something went wrong" + e.getMessage());
+        }
 
 
 
