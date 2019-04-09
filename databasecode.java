@@ -139,7 +139,7 @@ try {
             }
 
 
-//new
+///new2
 
 
  try{
@@ -152,12 +152,28 @@ try {
               if(results.getInt(1)==branchid)
               {
                   trucklist=results.getString(5);
-                  consignmentlist=results.getString(6);
-                  employeelist=results.getString(2);
+                  
+                  
               }
           }
-          st.close();
+           results.close();
+           st.close();
           conn.close();
+          st.execute("SELECT * FROM truck");
+          ResultSet results1=st.getResultSet();
+          while(results1.next())
+          {
+               if(results1.getString(1) belong to trucklist and results1.getString(4)>0)
+               {
+                    newtrucklist=results1.getString(1);    
+                
+               }
+          }
+          
+          
+   
+          
+         
       }catch(SQLException e)
       {
           System.out.println("Something went wrong"+e.getMessage());
