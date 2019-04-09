@@ -8,6 +8,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
+import java.util.ArrayList;
+
 public class NewEmployeeController {
 
     @FXML
@@ -28,6 +30,17 @@ public class NewEmployeeController {
     public void initialize() {
 
         branch.getItems().add("Alpha");
+
+
+        /*
+        *   Go to database and get all the branch ID
+        *
+        *   for(get string:i from datbase) {
+        *
+        *       branch.getItems.add(string);
+        * }
+        *
+         */
 
 
         RequiredFieldValidator validator = new RequiredFieldValidator();

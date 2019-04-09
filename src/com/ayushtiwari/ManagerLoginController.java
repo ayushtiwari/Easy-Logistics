@@ -98,8 +98,6 @@ public class ManagerLoginController {
                 window.setMaxHeight(728);
                 window.setMaxWidth(1366);
                 windowDashboard.show();
-
-
             } else {
 
             }
