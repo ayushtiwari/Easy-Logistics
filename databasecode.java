@@ -164,5 +164,17 @@ try {
       }
 
 
+//new1
 
+ Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+    Statement st=conn.createStatement();
+    st.execute("SELECT * FROM employee");
+    ResultSet results = st.getResultSet();
+    while(results.next()){
+        if(results.getString(4)==username)
+            {
+                results.getString(1);
+            }
+        
+            }
 
