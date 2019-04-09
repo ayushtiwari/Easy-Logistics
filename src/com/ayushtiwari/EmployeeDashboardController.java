@@ -90,7 +90,8 @@ public class EmployeeDashboardController {
     }
 
     @FXML
-    void onReceiveTruckClick(MouseEvent event) {
+    void onReceiveTruckClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("receiveTruckTable.fxml")));
         consignmentHistory.setTextFill(Color.WHITE);
         dispatchTruck.setTextFill(Color.WHITE);
         printBill.setTextFill(Color.WHITE);

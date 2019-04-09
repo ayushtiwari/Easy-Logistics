@@ -20,7 +20,7 @@ public class Main extends Application {
     boolean managerExists = true;
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
         Statement st = conn.createStatement();
         st.execute("SELECT * FROM manager");
         ResultSet results = st.getResultSet();

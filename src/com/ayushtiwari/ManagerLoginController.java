@@ -74,7 +74,7 @@ public class ManagerLoginController {
 
 
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
                 Statement st = conn.createStatement();
                 st.execute("SELECT * FROM manager");
                 ResultSet results = st.getResultSet();
@@ -98,6 +98,8 @@ public class ManagerLoginController {
                 window.setMaxHeight(728);
                 window.setMaxWidth(1366);
                 windowDashboard.show();
+
+
             } else {
 
             }
