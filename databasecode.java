@@ -194,3 +194,23 @@ try {
         
             }
 
+//latest
+ try{
+           Connection conn=DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+           Statement st=conn.createStatement();
+           st.execute("SELECT * FROM office");
+           ResultSet results=st.getResultSet();
+           while(results.next()){
+           System.out.println(results.getString(3));//street name
+           System.out.println(results.getString(4));//city name
+           System.out.println(results.getString(2));//employeelist
+           for(i=0;i<strlen(employeelist);i++)
+        {
+        if(employeelist[i]=",")count++;
+        System.out.println(count)//no of employees
+
+        }
+        }
+        }catch(SQLException e){
+         System.out.println("something went wrong");
+        }
