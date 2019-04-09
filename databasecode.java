@@ -139,7 +139,29 @@ try {
             }
 
 
+//new
 
+
+ try{
+          Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+          Statement st=conn.createStatement();
+          st.execute("SELECT * FROM office");
+          ResultSet results=st.getResultSet();
+          while(results.next())
+          {
+              if(results.getInt(1)==branchid)
+              {
+                  trucklist=results.getString(5);
+                  consignmentlist=results.getString(6);
+                  employeelist=results.getString(2);
+              }
+          }
+          st.close();
+          conn.close();
+      }catch(SQLException e)
+      {
+          System.out.println("Something went wrong"+e.getMessage());
+      }
 
 
 
