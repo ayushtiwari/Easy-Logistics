@@ -130,3 +130,31 @@
 //
 //
 //
+
+
+
+
+
+
+
+
+
+// all trucks
+
+
+    try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM truck");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                System.out.println(results.getInt(1)); //truckid
+                System.out.println(results.getInt(3)); //dispatching branchid
+                System.out.println(results.getInt(10)); //destination branch
+                System.out.println(results.getInt(11)); //curr_occupamcy
+                System.out.println(results.getInt(4)); //max_capacity
+            }
+        } catch (SQLException e) {
+            System.out.println("Something went wrong" + e.getMessage());
+        }
+
