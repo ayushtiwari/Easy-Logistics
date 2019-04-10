@@ -158,3 +158,25 @@
             System.out.println("Something went wrong" + e.getMessage());
         }
 
+
+
+
+//consignment
+try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM consignment");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                System.out.println(results.getInt(1));//consignment_id
+                System.out.println(results.getInt(2));//volume
+                System.out.println(results.getString(3));//senders name
+                System.out.println(results.getInt(11));//arrival time
+                System.out.println(results.getInt(12));//departure time
+                System.out.println(results.getInt(14));//sending officeid
+                System.out.println(results.getInt(15));//recieving officeid
+
+            }
+        }catch(SQLException e){
+            System.out.println("something went wrong");
+        }
