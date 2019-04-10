@@ -7,10 +7,19 @@ public class TransportData {
     private int officeId;
     private String[] consignmentIdList;
     private String[] truckId;
+    private String employeeUserName;
 
     private TransportData() {
 
 
+    }
+
+    public String getEmployeeUserName() {
+        return employeeUserName;
+    }
+
+    public void setEmployeeUserName(String employeeUserName) {
+        this.employeeUserName = employeeUserName;
     }
 
     public static TransportData getInstance() {

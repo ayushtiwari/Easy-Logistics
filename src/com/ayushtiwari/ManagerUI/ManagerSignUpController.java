@@ -1,3 +1,6 @@
+//This class is meant for Manager SignUp
+//The details of manager username,name,password,email have been validated
+//Accordingly,a manager will be created and our software is based on a single manager
 package com.ayushtiwari.ManagerUI;
 
 import com.jfoenix.controls.JFXButton;
@@ -166,6 +169,7 @@ public class ManagerSignUpController implements Initializable {
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.hide();
                 dashboardWindow.setScene(dashboardScene);
+                dashboardWindow.setTitle("Dashboard");
                 dashboardWindow.setMaxHeight(728);
                 dashboardWindow.setMaxWidth(1366);
                 dashboardWindow.show();

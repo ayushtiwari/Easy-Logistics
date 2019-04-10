@@ -44,6 +44,7 @@ public class IndividualTruckDispatchController {
 
         tableView.setItems(populate());
 
+
     }
 
     public ObservableList<RDConsignmentTableItem> populate() {

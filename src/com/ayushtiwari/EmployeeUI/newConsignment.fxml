@@ -46,13 +46,13 @@
                               prefWidth="188.0" promptText="Consignment ID"/>
                 <JFXTextField fx:id="volume" focusColor="#09b6bc" layoutX="311.0" layoutY="181.0" prefHeight="27.0"
                               prefWidth="188.0" promptText="Volume"/>
-                <JFXButton fx:id="submit" onAction="#onSubmitClick" buttonType="RAISED" layoutX="456.0" layoutY="502.0"
+                <JFXButton fx:id="submit" buttonType="RAISED" layoutX="456.0" layoutY="502.0" onAction="#onSubmitClick"
                            prefHeight="40.0" prefWidth="181.0" style="-fx-background-color: #2196f3;" text="Submit"
                            textFill="WHITE"/>
                 <JFXTextField fx:id="currentOfficeId" focusColor="#09b6bc" layoutX="560.0" layoutY="181.0"
                               prefHeight="27.0" prefWidth="188.0" promptText="Current Office ID"/>
                 <JFXTextField fx:id="nextOffice" focusColor="#09b6bc" layoutX="799.0" layoutY="180.0" prefHeight="27.0"
-                              prefWidth="188.0" text="Receiving Office Id"/>
+                              prefWidth="188.0" promptText="Receiving Office ID"/>
             </children>
         </Pane>
     </children>

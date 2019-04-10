@@ -10,7 +10,7 @@ public class DispatchTruckTableItem {
     private SimpleStringProperty occupancy;
     private SimpleStringProperty driverId;
 
-    public DispatchTruckTableItem(String truckId, String destinationBranch, String Capacity, String occupancy, String driverId) {
+    public DispatchTruckTableItem(String truckId, String destinationBranch, String Capacity, String occupancy) {
         this.truckId = new SimpleStringProperty(truckId);
         this.destinationBranch = new SimpleStringProperty(destinationBranch);
         this.capacity = new SimpleStringProperty(Capacity);

@@ -1,4 +1,5 @@
-package com.ayushtiwari.EmployeeUI;
+package com.ayushtiwari.ManagerUI;
+
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -20,32 +21,29 @@ public class ConsignmentTableItem {
     private SimpleStringProperty sendersName;
     private SimpleStringProperty sendingOfficeId;
     private SimpleStringProperty receivingOfficeId;
-    private SimpleStringProperty isDelivered;
-    private SimpleStringProperty isDispatched;
+    private SimpleStringProperty arrivalTime;
+    private SimpleStringProperty dispatchTime;
 
 
+//    public ConsignmentTableItem(Consignment consignment) {
+//        this.id = new SimpleStringProperty(Integer.toString(consignment.getConsignmentId()));
+//        this.sendersName = new SimpleStringProperty(consignment.getSender().getName());
+//        this.sendingOfficeId = new SimpleStringProperty(Integer.toString(consignment.getSendingOffice().getOfficeId()));
+//        this.receivingOfficeId = new SimpleStringProperty(Integer.toString(consignment.getReceivingOffice().getOfficeId()));
+//        this.isDelivered = new SimpleStringProperty(Boolean.toString(consignment.isDelivered()));
+//        this.isDispatched = new SimpleStringProperty(Boolean.toString(consignment.isDispatched()));
+//
+//    }
 
-
-    public ConsignmentTableItem(String id, String sendersName, String sendingOfficeId, String receivingOfficeId, String isDelivered, String isDispatched) {
+    public ConsignmentTableItem(String id, String sendersName, String sendingOfficeId, String receivingOfficeId, String arrivalTime, String dispatchTime) {
         this.id = new SimpleStringProperty(id);
         this.sendersName = new SimpleStringProperty(sendersName);
         this.sendingOfficeId = new SimpleStringProperty(sendingOfficeId);
         this.receivingOfficeId = new SimpleStringProperty(receivingOfficeId);
-        this.isDelivered = new SimpleStringProperty(isDelivered);
-        this.isDispatched = new SimpleStringProperty(isDispatched);
+        this.arrivalTime = new SimpleStringProperty(arrivalTime);
+        this.dispatchTime = new SimpleStringProperty(dispatchTime);
     }
 
-    public String getIsDispatched() {
-        return isDispatched.get();
-    }
-
-    public void setIsDispatched(String isDispatched) {
-        this.isDispatched.set(isDispatched);
-    }
-
-    public SimpleStringProperty isDispatchedProperty() {
-        return isDispatched;
-    }
 
     public String getId() {
         return id.get();
@@ -95,15 +93,27 @@ public class ConsignmentTableItem {
         return receivingOfficeId;
     }
 
-    public String getIsDelivered() {
-        return isDelivered.get();
+    public String getArrivalTime() {
+        return arrivalTime.get();
     }
 
-    public void setIsDelivered(String isDelivered) {
-        this.isDelivered.set(isDelivered);
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime.set(arrivalTime);
     }
 
-    public SimpleStringProperty isDeliveredProperty() {
-        return isDelivered;
+    public SimpleStringProperty arrivalTimeProperty() {
+        return arrivalTime;
+    }
+
+    public String getDispatchTime() {
+        return dispatchTime.get();
+    }
+
+    public void setDispatchTime(String dispatchTime) {
+        this.dispatchTime.set(dispatchTime);
+    }
+
+    public SimpleStringProperty dispatchTimeProperty() {
+        return dispatchTime;
     }
 }

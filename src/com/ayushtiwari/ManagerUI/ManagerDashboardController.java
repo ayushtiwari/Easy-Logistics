@@ -1,3 +1,6 @@
+//This class is for managerdashboard GUI page
+//actionlisteners for various buttons are described
+
 package com.ayushtiwari.ManagerUI;
 
 
@@ -67,8 +70,8 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void onViewConsignmentsClick(MouseEvent event) {
-
+    void onViewConsignmentsClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("consignmentTable.fxml")));
     }
 
     @FXML

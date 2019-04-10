@@ -1,3 +1,6 @@
+//One of the functionalities of a manager is he can add a new truck if he feels so
+//This is achieved by this corresponding class
+//Accordingly, details of truck will be updated in sqlite database
 package com.ayushtiwari.ManagerUI;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -33,15 +36,11 @@ public class NewTruckController {
             ResultSet results = st.getResultSet();
             while (results.next()) {
                 int branchid = results.getInt(1);
-
                 branch.getItems().add(Integer.toString(branchid));
             }
         } catch (SQLException s) {
             System.out.println("Error accessing Database" + s.getMessage());
         }
-
-
-
 
 
         RequiredFieldValidator validator = new RequiredFieldValidator();

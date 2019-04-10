@@ -1,6 +1,7 @@
 
 package com.ayushtiwari.EmployeeUI;
 
+import com.ayushtiwari.TransportCompanyData.TransportData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,6 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.sql.*;
 
 public class DispatchTruckTableController {
 
@@ -79,11 +82,33 @@ public class DispatchTruckTableController {
 
     public ObservableList<DispatchTruckTableItem> populate() {
 
+        int branchId = TransportData.getInstance().getOfficeId();
+
         ObservableList<DispatchTruckTableItem> observableList = FXCollections.observableArrayList();
 
-        /*
-        Query database
-         */
+
+        try {
+            Connection conn1 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Statement st1 = conn1.createStatement();
+            st1.execute("SELECT * FROM truck");
+            ResultSet results1 = st1.getResultSet();
+            while (results1.next()) {
+                if (results1.getInt(3) == branchId) {
+
+                    observableList.add(new DispatchTruckTableItem(
+                            Integer.toString(results1.getInt(1)),
+                            Integer.toString(results1.getInt(10)),
+                            Integer.toString(results1.getInt(4)),
+                            Integer.toString(results1.getInt(11))));
+
+
+                }
+
+
+            }
+        } catch (SQLException e) {
+
+        }
 
         return observableList;
 

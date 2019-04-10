@@ -40,6 +40,8 @@ public class EmployeeTableController {
 
         ObservableList<EmployeeTableItem> observableList = FXCollections.observableArrayList();
 
+        String employeeIdValue, nameValue, branchValue, userNameValue, cityName = "";
+
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
             Statement st = conn.createStatement();
@@ -49,18 +51,22 @@ public class EmployeeTableController {
             st1.execute("SELECT * FROM office");
             ResultSet results1 = st1.getResultSet();
             while (results.next()) {
-                System.out.println(results.getInt(1));   //employee id
-                System.out.println(results.getString(2));  //employee name
-                System.out.println(results.getInt(3)); //branch_id
-                System.out.println(results.getString(4)); //username
+                employeeIdValue = Integer.toString(results.getInt(1));
+//                System.out.println(results.getInt(1));   //employee id
+                nameValue = results.getString(2);  //employee name
+                branchValue = Integer.toString(results.getInt(3)); //branch_id
+                userNameValue = results.getString(4); //username
 
                 int branchid = results.getInt(3);
 
                 while (results1.next()) {
                     if (results1.getInt(1) == branchid) {
-                        System.out.println(results1.getString(4));//cityname
+                        cityName = results1.getString(4);//cityname
                     }
                 }
+
+                observableList.add(new EmployeeTableItem(nameValue, branchid + " - " + cityName, employeeIdValue, userNameValue));
+
                 st1.execute("SELECT * FROM office");
                 results1 = st1.getResultSet();
             }

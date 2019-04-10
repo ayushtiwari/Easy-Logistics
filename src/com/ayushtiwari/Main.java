@@ -23,7 +23,7 @@ public class Main extends Application {
 
         boolean managerExists = true;
 
-        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
         Statement st = conn.createStatement();
         st.execute("SELECT * FROM manager");
         ResultSet results = st.getResultSet();

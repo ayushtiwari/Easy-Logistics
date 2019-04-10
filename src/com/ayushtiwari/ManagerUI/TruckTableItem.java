@@ -1,6 +1,5 @@
 package com.ayushtiwari.ManagerUI;
 
-import com.ayushtiwari.TransportClasses.Truck;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TruckTableItem {
@@ -11,14 +10,13 @@ public class TruckTableItem {
     private SimpleStringProperty occupancy;
     private SimpleStringProperty capacity;
 
-    public TruckTableItem(Truck truck) {
-        this.truckId = new SimpleStringProperty(Integer.toString(truck.getTruckId()));
-        long[] a = truck.getIdleTime();
+    public TruckTableItem(int truckId, long idleHours, long idleMinutes, int currentBranchId, String currentBranchCityName, int occupancy, int capacity) {
+        this.truckId = new SimpleStringProperty(Integer.toString(truckId));
 
-        this.averageTruckIdleTime = new SimpleStringProperty(a[0] + "h " + a[1] + "m");
-        this.capacity = new SimpleStringProperty(Integer.toString(truck.getMaxCapacity()));
-        this.occupancy = new SimpleStringProperty(Integer.toString(truck.getCurrentOccupancy()));
-        this.currentBranch = new SimpleStringProperty(Integer.toString(truck.getCurrentOffice().getOfficeId()));
+        this.averageTruckIdleTime = new SimpleStringProperty(idleHours + "h " + idleMinutes + "m");
+        this.capacity = new SimpleStringProperty(Integer.toString(capacity));
+        this.occupancy = new SimpleStringProperty(Integer.toString(occupancy));
+        this.currentBranch = new SimpleStringProperty(currentBranchId + " - " + currentBranchCityName);
     }
 
     public String getTruckId() {

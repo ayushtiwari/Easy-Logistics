@@ -45,7 +45,7 @@ public class ConsignmentHistoryController implements Initializable {
         dispatchStatusColumn.setCellValueFactory(new PropertyValueFactory<ConsignmentTableItem, String>("isDispatched"));
         deliveryStatusColumn.setCellValueFactory(new PropertyValueFactory<ConsignmentTableItem, String>("isDelivered"));
 
-        //load dummy data
+        //loa
 
         tableView.setItems(getConsignments());
 
@@ -90,49 +90,19 @@ public class ConsignmentHistoryController implements Initializable {
     public ObservableList<ConsignmentTableItem> getConsignments() {
         ObservableList<ConsignmentTableItem> consignmentTableItemObservableList = FXCollections.observableArrayList();
 
+        int branchid = TransportData.getInstance().getOfficeId();
+
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
             Statement st = conn.createStatement();
-            st.execute("SELECT * FROM office");
-            ResultSet results = st.getResultSet();
-            String consignmentList = "*";
-            while (results.next()) {
-                if (TransportData.getInstance().getOfficeId() == results.getInt(1))
-                    consignmentList = results.getString(6);
-            }
             st.execute("SELECT * FROM consignment");
-            ResultSet results1 = st.getResultSet();
-
-
-            if (consignmentList.equals("*")) {
-
-            } else {
-                String[] consignments = consignmentList.substring(1).split(",");
-                while (results1.next()) {
-
-                    boolean flag = false;
-
-                    for (String i : consignments) {
-                        if (Integer.toString(results1.getInt(1)).equals(i)) {
-                            flag = true;
-                            break;
-                        }
-                    }
-
-                    if (flag) {
-                        System.out.println(results1.getInt(1));     //consignemntidd
-                        System.out.println(results1.getString(3));  //sendername
-                        System.out.println(results1.getString(9));  //dispatch status
-                        System.out.println(results1.getString(10));  //deliverystatus
-                        System.out.println(results1.getString(14)); //sendingofficeid
-                        System.out.println(results1.getString(15)); //receivingofficeid
-                        System.out.println(results1.getString(5));  //sender city
-                        System.out.println(results1.getString(8));  //receiver city
-
-                    }
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                if (results.getInt(14) == branchid && results.getString(9).equals("true")) {
+                    consignmentTableItemObservableList.add(new ConsignmentTableItem(Integer.toString(results.getInt(1)), results.getString(3), Integer.toString(results.getInt(14)), Integer.toString(results.getInt(15)), results.getString(10), results.getString(9)));
                 }
-
             }
+
         } catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());
         }

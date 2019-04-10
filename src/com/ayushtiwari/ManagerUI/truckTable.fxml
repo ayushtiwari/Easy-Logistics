@@ -22,7 +22,7 @@
             <columns>
                 <TableColumn fx:id="truckID" prefWidth="230.0" text="Truck ID"/>
                 <TableColumn fx:id="departingBranch" minWidth="0.0" prefWidth="210.0" text="Departing Branch"/>
-                <TableColumn fx:id="averageTruckIdleTime" prefWidth="210.0" text="Destination Branch"/>
+                <TableColumn fx:id="averageTruckIdleTime" prefWidth="210.0" text="Average Truck Idle Time"/>
                 <TableColumn fx:id="occupancy" prefWidth="210.0" text="Occupancy"/>
                 <TableColumn fx:id="capacity" prefWidth="210.0" text="Capacity"/>
             </columns>

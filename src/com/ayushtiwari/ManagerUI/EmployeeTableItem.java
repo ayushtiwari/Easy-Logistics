@@ -9,7 +9,7 @@ public class EmployeeTableItem {
     private SimpleStringProperty userName;
 
     public EmployeeTableItem(String name, String branch, String employeeId, String userName) {
-        this.name = new SimpleStringProperty(branch);
+        this.name = new SimpleStringProperty(name);
         this.branch = new SimpleStringProperty(branch);
         this.employeeId = new SimpleStringProperty(employeeId);
         this.userName = new SimpleStringProperty(userName);

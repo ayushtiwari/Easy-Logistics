@@ -1,3 +1,5 @@
+//This class is meant for manager login
+//
 package com.ayushtiwari.ManagerUI;
 
 import com.jfoenix.controls.JFXButton;

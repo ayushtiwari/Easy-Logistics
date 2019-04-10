@@ -1,5 +1,6 @@
 package com.ayushtiwari.EmployeeUI;
 
+import com.ayushtiwari.TransportCompanyData.TransportData;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +34,10 @@ public class EmployeeDashboardController {
     private JFXButton customerContacts;
 
     public void initialize() throws Exception {
+
+        System.out.println(TransportData.getInstance().getOfficeId());
+
+
         scrollPane.setContent((FXMLLoader.load(getClass().getResource("welcome.fxml"))));
     }
 
