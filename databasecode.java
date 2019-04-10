@@ -230,3 +230,66 @@ try {
         }catch(SQLException e){
             System.out.println("something went wrong");
         }
+
+
+
+//latest 4  
+try{
+       Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+       Statement st = conn.createStatement();
+       st.execute("SELECT * FROM manager");
+       ResultSet results = st.getResultSet();
+       managername=results.getString(1);//managername
+   }catch(SQLException e){
+       System.out.println("something went wrong");
+   }
+
+
+//
+
+
+   try{
+       Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+       Statement st = conn.createStatement();
+       st.execute("SELECT * FROM employee");
+       ResultSet results = st.getResultSet();
+       while(results.next()){
+           if(employeeid==results.getInt(1))employeename=results.getString(2);
+       }
+   }catch(SQLException e){
+       System.out.println("something went wrong");
+   }
+//from truck id
+
+
+ try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM truck");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                if (results.getInt(1) == truckid) {
+                    System.out.println(results.getInt(4));//max capacity
+                    System.out.println(results.getInt(11));//curroccupancy
+                    System.out.println(results.getInt(10));//next officeid
+                }
+            }
+        }catch(SQLException e){
+            System.out.println("something went wrong");
+        }
+
+//trucks from branchid
+  try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM office");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                if (results.getInt(1) == branchid) {
+                    trucklist = results.getString(5);
+                }
+            }
+        }catch(SQLException e){
+            System.out.println("something went wrong");
+        }
+
