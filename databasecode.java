@@ -293,3 +293,17 @@ try{
             System.out.println("something went wrong");
         }
 
+// naya
+
+ try{
+          Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+          Statement st = conn.createStatement();
+          st.execute("UPDATE truck SET curr_occupancy=       WHERE truck_id=     ");
+          st.execute("UPDATE truck SET nextoffice_id=        WHERE  truck_id=    ");
+          st.execute("UPDATE truck SET consignment_list=     WHERE  truck_id=    ");
+          
+
+      }catch(SQLException e){
+          System.out.println("something went wrong");
+      }
+
