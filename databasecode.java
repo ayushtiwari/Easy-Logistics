@@ -247,3 +247,55 @@ try{
         }catch(SQLException e){
         System.out.println("Something went wrong: " + e.getMessage());  
         }
+                           
+                           
+                           
+ //latest 2
+                           
+ try{
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+        Statement st=conn.createStatement();
+        st.execute("SELECT * FROM employee");
+        ResultSet results = st.getResultSet();
+        st1.execute("SELECT * FROM office");
+        ResultSet results1=st1.getResultSet();
+        while(results.next())
+        {
+            System.out.println(results.getInt(1));   //employee id
+            System.out.println(results.getText(2));  //employee name
+            System.out.println(results.getInt(3)); //branch_id
+            System.out.println(results.getText(4)); //username
+            int branchid=results.getInt(3);
+            while(results1.next()){
+                if(results1.getInt(1)==branchid)
+               {
+                         System.out.println(results1.getText(4));//cityname
+               }
+                results1=st1.getResultSet();
+
+        }
+
+
+        }
+
+        }catch(SQLException e){
+        System.out.println("Something went wrong" + e.getMessage());
+        }
+
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
+                           
