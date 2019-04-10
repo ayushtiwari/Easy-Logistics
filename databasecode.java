@@ -180,3 +180,22 @@ try {
         }catch(SQLException e){
             System.out.println("something went wrong");
         }
+
+
+
+
+// latest
+ try{
+         Connection conn = DriverManager.getConnection("jdbc:sqlite://Users//Nikhil//Desktop//TransportCompany//database1-2.db");
+         Statement st = conn.createStatement();
+         st.execute("SELECT * FROM office");
+         ResultSet results = st.getResultSet();
+         while(results.next()){
+             if(branchid==results.getInt(1)){
+                 consignementlist=results.getString(6);
+             }
+         }
+     }catch(SQLException e){
+         System.out.println("something went wrong");
+     }
+
