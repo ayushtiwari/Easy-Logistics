@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.ayushtiwari.ManagerUI.BranchStatsController">
+    <children>
+        <TableView fx:id="tableView" prefHeight="650.0" prefWidth="1070.0">
+            <columns>
+                <TableColumn fx:id="branchID" prefWidth="250.0" text="Branch ID"/>
+                <TableColumn fx:id="streetName" prefWidth="300.0" text="Street Name"/>
+                <TableColumn fx:id="cityName" prefWidth="300.0" text="City"/>
+                <TableColumn fx:id="employeeCount" prefWidth="220.0" text="Employee Count"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

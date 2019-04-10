@@ -9,6 +9,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Optional;
 
 public class NewConsignmentController {
@@ -71,17 +75,36 @@ public class NewConsignmentController {
         validation(currentOfficeId);
         validation(volume);
         validation(nextOffice);
+
+
     }
 
     public void onSubmitClick() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         boolean success = true;
 
-        //Assign Truck
+        int truckid = 12;
+        try {
+            System.out.println("asdfgj");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            System.out.println("asdfgj");
+            Statement st = conn.createStatement();
+            System.out.println("asdfgj");
+            st.execute("INSERT INTO consignment VALUES ('" + consignment.getText() + "','" + volume.getText() + "','" + senderName
+                    .getText() + "','" + senderStreetName.getText() + "','" + senderCity.getText() + "','" + receiverName
+                    .getText() + "','" + receiverStreetName.getText() + "','" + receiverCity + "','NOT DISPATCHED','NOT DELIVERED','NULL','NULL','NULL','" + currentOfficeId.getText() + "','" + nextOffice.getText() + "','" + truckid + "')");
+            st.close();
+            System.out.println("asdfgj");
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong" + e.getMessage());
+            success = false;
+        }
+
 
         alert.setTitle("Message");
 
-        if (!success) {
+        if (success) {
 
             alert.setContentText("Truck Allocation Successfull");
         } else {

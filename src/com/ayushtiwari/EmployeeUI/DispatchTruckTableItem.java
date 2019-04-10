@@ -1,6 +1,5 @@
 package com.ayushtiwari.EmployeeUI;
 
-import com.ayushtiwari.TransportClasses.Truck;
 import javafx.beans.property.SimpleStringProperty;
 
 public class DispatchTruckTableItem {
@@ -11,12 +10,11 @@ public class DispatchTruckTableItem {
     private SimpleStringProperty occupancy;
     private SimpleStringProperty driverId;
 
-    public DispatchTruckTableItem(Truck truck) {
-        this.truckId = new SimpleStringProperty(Integer.toString(truck.getTruckId()));
-        this.destinationBranch = new SimpleStringProperty(Integer.toString(truck.getNextOffice().getOfficeId()));
-        this.capacity = new SimpleStringProperty(Integer.toString(truck.getMaxCapacity()));
-        this.occupancy = new SimpleStringProperty(Integer.toString(truck.getCurrentOccupancy()));
-        this.driverId = new SimpleStringProperty(" ");
+    public DispatchTruckTableItem(String truckId, String destinationBranch, String Capacity, String occupancy, String driverId) {
+        this.truckId = new SimpleStringProperty(truckId);
+        this.destinationBranch = new SimpleStringProperty(destinationBranch);
+        this.capacity = new SimpleStringProperty(Capacity);
+        this.occupancy = new SimpleStringProperty(occupancy);
     }
 
     public String getTruckId() {

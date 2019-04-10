@@ -40,7 +40,7 @@ public class NewEmployeeController {
         *
          */
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
             Statement st = conn.createStatement();
             st.execute("SELECT * FROM office");
             ResultSet results = st.getResultSet();
@@ -49,6 +49,8 @@ public class NewEmployeeController {
 
                 branch.getItems().add(Integer.toString(branchid));
             }
+            st.close();
+            conn.close();
         } catch (SQLException s) {
             System.out.println("Error accessing Database" + s.getMessage());
         }
@@ -133,32 +135,45 @@ public class NewEmployeeController {
 
             //Add Employee To database
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
-                //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                System.out.println("Alphabetad");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
                 Statement st = conn.createStatement();
+                System.out.println("Alphabetad");
                 st.execute("INSERT INTO  employee VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + branch.getValue() + "','" + userName.getText() + "','" + password.getText() + "')");
                 st.execute("SELECT * FROM office");
+                System.out.println("Alphabetad");
                 ResultSet results = st.getResultSet();
                 while (results.next()) {
-                    if (results.getInt(1) == Integer.parseInt(branch.getValue()))
+                    System.out.println("Alphabetad");
+                    if (results.getInt(1) == Integer.parseInt(branch.getValue())) {
                         employeelist = results.getString(2) + employeeId.getText() + ",";
-                    System.out.println(employeelist);
-                    int officeIdValue = Integer.parseInt(branch.getValue());
-                    //st.execute("INSERT INTO office(employee_list)VALUE('"+employeelist+"') WHERE office_id=Integer.parseInt(branch.getValue())");
-                    st.execute("UPDATE office SET employee_list=('" + employeelist + "') WHERE office_id=('" + officeIdValue + "')");
+                        System.out.println(employeelist);
+                        int officeIdValue = Integer.parseInt(branch.getValue());
+                        //st.execute("INSERT INTO office(employee_list)VALUE('"+employeelist+"') WHERE office_id=Integer.parseInt(branch.getValue())");
+                        st.execute("UPDATE office SET employee_list=('" + employeelist + "') WHERE office_id=('" + officeIdValue + "')");
+                    }
                 }
+                st.close();
+                conn.close();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Employee Successfully Created");
+                alert.setTitle("Success");
+                alert.showAndWait();
             } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("There was some problem in adding new Employee.");
+                alert.setTitle("Failed");
+                alert.showAndWait();
                 System.out.println("Something went wrong" + e.getMessage());
             }
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Employee Successfully Created");
-            alert.showAndWait();
+
 
             employeeId.clear();
             password.clear();
             userName.clear();
             branch.getSelectionModel().clearSelection();
             name.clear();
+            initialize();
 
         }
     }

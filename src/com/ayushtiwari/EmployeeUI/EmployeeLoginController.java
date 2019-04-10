@@ -1,8 +1,5 @@
 package com.ayushtiwari.EmployeeUI;
 
-import com.ayushtiwari.TransportClasses.Address;
-import com.ayushtiwari.TransportClasses.Employee;
-import com.ayushtiwari.TransportClasses.Office;
 import com.ayushtiwari.TransportCompanyData.TransportData;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -17,8 +14,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.sql.*;
 
 public class EmployeeLoginController {
 
@@ -39,7 +39,20 @@ public class EmployeeLoginController {
 
     public void initialize() {
 
-        branch.getItems().add("AlphaBeta");
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM office");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                int branchid = results.getInt(1);
+
+                branch.getItems().add(Integer.toString(branchid));
+            }
+        } catch (SQLException s) {
+            System.out.println("Error accessing Database" + s.getMessage());
+        }
+
 
         RequiredFieldValidator validator = new RequiredFieldValidator();
         userName.getValidators().add(validator);
@@ -93,33 +106,90 @@ public class EmployeeLoginController {
             /*
             Validate Employee;
              */
-            boolean detailsCorrect = true;
-            if (detailsCorrect) {
+            boolean detailsCorrect = false;
 
 
-                //get Branch Details
-                //getEmployee Details
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+                Statement st = conn.createStatement();
+                st.execute("SELECT * FROM employee");
+                ResultSet results = st.getResultSet();
+                boolean a = employeeUserName.equals(results.getString(4)) && employeePassWord.equals(results.getString(5));
+                detailsCorrect = a && employeeBranch.equals(Integer.toString(results.getInt(3)));
 
 
-                Office office = new Office(123, new Address("ch", "dhh"));
-                Employee employee = new Employee(1234, "Alpha", office, "1245", "abcd");
-                TransportData.getInstance().setCurrentEmployee(employee);
+                st.close();
+                conn.close();
+                if (detailsCorrect) {
+                    /*
+                    //get Branch Details
+                    //getEmployee Details
+                    */
 
-                Parent employeeDashboard = FXMLLoader.load(getClass().getResource("employeeDashboard.fxml"));
-                Scene dashboard = new Scene(employeeDashboard);
-                Stage windowDashboard = new Stage();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.getOwner().hide();
+                    String truckList = "", consignmentList = "", employeeList = "", employeeId = "";
+                    try {
+                        Connection conn1 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+                        Statement st1 = conn1.createStatement();
+                        st1.execute("SELECT * FROM office");
+                        ResultSet results1 = st1.getResultSet();
+                        while (results1.next()) {
 
-                windowDashboard.setTitle("Dashboard - " + TransportData.getInstance().getCurrentEmployee().getName());
-                windowDashboard.setScene(dashboard);
-                window.setMaxHeight(728);
-                window.setMaxWidth(1366);
-                windowDashboard.show();
+                            if (results1.getInt(1) == Integer.parseInt(branch.getValue())) {
+                                truckList = results1.getString(5);
+                                consignmentList = results1.getString(6);
+                                employeeList = results1.getString(2);
+                            }
+                        }
 
-            } else {
-                incorrectDetails.setText("Incorrect Details");
+
+                        st1.close();
+                        conn1.close();
+                    } catch (SQLException e) {
+                        System.out.println("Something went wrong" + e.getMessage());
+                    }
+
+                    Connection conn3 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+                    Statement st3 = conn.createStatement();
+                    st.execute("SELECT * FROM employee");
+                    ResultSet results3 = st.getResultSet();
+                    while (results3.next()) {
+                        if (results3.getString(4).equals(userName.getText())) {
+                            employeeId = results3.getString(1);
+                        }
+
+                    }
+                    TransportData.getInstance().setOfficeId(Integer.parseInt(branch.getValue()));
+                    TransportData.getInstance().setEmployeeId(Integer.parseInt(employeeId));
+                    TransportData.getInstance().setTruckId(truckList.substring(1).split(","));
+                    TransportData.getInstance().setConsignmentIdList(consignmentList.substring(1).split(","));
+
+                    System.out.println(TransportData.getInstance().getEmployeeId());
+                    System.out.println(TransportData.getInstance().getOfficeId());
+
+                    Parent employeeDashboard = FXMLLoader.load(getClass().getResource("employeeDashboard.fxml"));
+                    Scene dashboard = new Scene(employeeDashboard);
+                    Stage windowDashboard = new Stage();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.getOwner().hide();
+
+                    windowDashboard.setTitle("Dashboard - ");
+                    windowDashboard.setScene(dashboard);
+                    window.setMaxHeight(728);
+                    window.setMaxWidth(1366);
+                    windowDashboard.show();
+
+                } else {
+                    incorrectDetails.setText("Incorrect Details");
+                }
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Something went wrong. Please try again.");
+                System.out.println("Something went wrong: " + e.getMessage());
             }
+
+
+
         }
 
     }

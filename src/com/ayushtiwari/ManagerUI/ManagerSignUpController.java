@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -150,29 +151,34 @@ public class ManagerSignUpController implements Initializable {
 
             //Enter data
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
                 // Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                 Statement st = conn.createStatement();
                 st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerEmail + "','" + managerUserName + "','" + managerPassword + "')");
                 st.close();
                 conn.close();
+                System.out.println("AlphaBEta");
+                Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
+                System.out.println("AlphaBEta");
+                Scene dashboardScene = new Scene(dashboard);
+                Stage dashboardWindow = new Stage();
+                System.out.println("AlphaBEta");
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.hide();
+                dashboardWindow.setScene(dashboardScene);
+                dashboardWindow.setMaxHeight(728);
+                dashboardWindow.setMaxWidth(1366);
+                dashboardWindow.show();
             } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Something went wrong. Please try again.");
                 System.out.println("Something went wrong: " + e.getMessage());
+
             }
 //
 //
-            System.out.println("AlphaBEta");
-            Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-            System.out.println("AlphaBEta");
-            Scene dashboardScene = new Scene(dashboard);
-            Stage dashboardWindow = new Stage();
-            System.out.println("AlphaBEta");
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.hide();
-            dashboardWindow.setScene(dashboardScene);
-            dashboardWindow.setMaxHeight(728);
-            dashboardWindow.setMaxWidth(1366);
-            dashboardWindow.show();
+
         }
     }
 

@@ -82,7 +82,6 @@ public class DispatchTruckTableController {
         ObservableList<DispatchTruckTableItem> observableList = FXCollections.observableArrayList();
 
         /*
-
         Query database
          */
 

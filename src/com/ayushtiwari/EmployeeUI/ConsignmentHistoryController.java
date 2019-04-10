@@ -1,5 +1,6 @@
 package com.ayushtiwari.EmployeeUI;
 
+import com.ayushtiwari.TransportCompanyData.TransportData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 
@@ -87,62 +89,54 @@ public class ConsignmentHistoryController implements Initializable {
 
     public ObservableList<ConsignmentTableItem> getConsignments() {
         ObservableList<ConsignmentTableItem> consignmentTableItemObservableList = FXCollections.observableArrayList();
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("5678", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
-        consignmentTableItemObservableList.add(new ConsignmentTableItem("1234", "alpha", "beta", "gamma", "delta", "empsion"));
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TrasportCompany/database1.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM office");
+            ResultSet results = st.getResultSet();
+            String consignmentList = "*";
+            while (results.next()) {
+                if (TransportData.getInstance().getOfficeId() == results.getInt(1))
+                    consignmentList = results.getString(6);
+            }
+            st.execute("SELECT * FROM consignment");
+            ResultSet results1 = st.getResultSet();
+
+
+            if (consignmentList.equals("*")) {
+
+            } else {
+                String[] consignments = consignmentList.substring(1).split(",");
+                while (results1.next()) {
+
+                    boolean flag = false;
+
+                    for (String i : consignments) {
+                        if (Integer.toString(results1.getInt(1)).equals(i)) {
+                            flag = true;
+                            break;
+                        }
+                    }
+
+                    if (flag) {
+                        System.out.println(results1.getInt(1));     //consignemntidd
+                        System.out.println(results1.getString(3));  //sendername
+                        System.out.println(results1.getString(9));  //dispatch status
+                        System.out.println(results1.getString(10));  //deliverystatus
+                        System.out.println(results1.getString(14)); //sendingofficeid
+                        System.out.println(results1.getString(15)); //receivingofficeid
+                        System.out.println(results1.getString(5));  //sender city
+                        System.out.println(results1.getString(8));  //receiver city
+
+                    }
+                }
+
+            }
+        } catch (SQLException e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
+
         return consignmentTableItemObservableList;
     }
 

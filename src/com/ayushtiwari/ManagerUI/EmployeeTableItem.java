@@ -1,6 +1,5 @@
 package com.ayushtiwari.ManagerUI;
 
-import com.ayushtiwari.TransportClasses.Employee;
 import javafx.beans.property.SimpleStringProperty;
 
 public class EmployeeTableItem {
@@ -9,11 +8,11 @@ public class EmployeeTableItem {
     private SimpleStringProperty employeeId;
     private SimpleStringProperty userName;
 
-    public EmployeeTableItem(Employee employee) {
-        this.name = new SimpleStringProperty(employee.getName());
-        this.branch = new SimpleStringProperty(Integer.toString(employee.getOffice().getOfficeId()));
-        this.employeeId = new SimpleStringProperty(Integer.toString(employee.getEmployeeId()));
-        this.userName = new SimpleStringProperty(employee.getUserName());
+    public EmployeeTableItem(String name, String branch, String employeeId, String userName) {
+        this.name = new SimpleStringProperty(branch);
+        this.branch = new SimpleStringProperty(branch);
+        this.employeeId = new SimpleStringProperty(employeeId);
+        this.userName = new SimpleStringProperty(userName);
     }
 
     public String getUserName() {

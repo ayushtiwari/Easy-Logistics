@@ -62,8 +62,8 @@ public class ManagerDashboardController {
     }
 
     @FXML
-    void onViewBranchStatsClick(MouseEvent event) {
-
+    void onViewBranchStatsClick(MouseEvent event) throws Exception {
+        scrollPane.setContent(FXMLLoader.load(getClass().getResource("branchStats.fxml")));
     }
 
     @FXML

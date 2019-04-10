@@ -12,6 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -27,7 +29,11 @@ public class ManagerLoginController {
     @FXML
     private JFXButton logIn;
 
+    @FXML
+    private Label incorrectDetails;
+
     public void initialize() {
+        incorrectDetails.setText("");
 
         RequiredFieldValidator validator = new RequiredFieldValidator();
         userName.getValidators().add(validator);
@@ -74,7 +80,7 @@ public class ManagerLoginController {
 
 
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
                 //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
                 Statement st = conn.createStatement();
                 st.execute("SELECT * FROM manager");
@@ -82,26 +88,28 @@ public class ManagerLoginController {
                 detailsCorrect = managerUserName.equals(results.getString(3)) && managerPassword.equals(results.getString(4));
                 st.close();
                 conn.close();
+                if (detailsCorrect) {
+
+
+                    Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
+                    Scene dashboardScene = new Scene(dashboard);
+                    Stage windowDashboard = new Stage();
+                    Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    window.getOwner().hide();
+                    windowDashboard.setScene(dashboardScene);
+                    window.setMaxHeight(728);
+                    window.setMaxWidth(1366);
+                    windowDashboard.show();
+                } else {
+                    incorrectDetails.setText("Incorrect Details");
+                }
             } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Something went wrong. Please try again.");
+                alert.showAndWait();
                 System.out.println("Something went wrong: " + e.getMessage());
-            }
-
-
-
-            if (detailsCorrect) {
-
-
-                Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-                Scene dashboardScene = new Scene(dashboard);
-                Stage windowDashboard = new Stage();
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.getOwner().hide();
-                windowDashboard.setScene(dashboardScene);
-                window.setMaxHeight(728);
-                window.setMaxWidth(1366);
-                windowDashboard.show();
-            } else {
-
+                System.out.println("Something went wrong: " + e.getMessage());
             }
 
         }

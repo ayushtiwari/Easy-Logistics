@@ -8,7 +8,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
-import java.util.ArrayList;
+import java.sql.*;
+import java.time.LocalDateTime;
 
 public class NewTruckController {
 
@@ -24,13 +25,24 @@ public class NewTruckController {
 
     public void initialize() {
 
-        ArrayList<String> branchIDs = new ArrayList<>();
-        /*
-         *   Get All BranchID's from database
-         *   populate branch drop down
-         *
-         *
-         */
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Statement st = conn.createStatement();
+            st.execute("SELECT * FROM office");
+            ResultSet results = st.getResultSet();
+            while (results.next()) {
+                int branchid = results.getInt(1);
+
+                branch.getItems().add(Integer.toString(branchid));
+            }
+        } catch (SQLException s) {
+            System.out.println("Error accessing Database" + s.getMessage());
+        }
+
+
+
+
 
         RequiredFieldValidator validator = new RequiredFieldValidator();
         truckId.getValidators().add(validator);
@@ -80,19 +92,43 @@ public class NewTruckController {
             if (branch.getItems().isEmpty()) branch.validate();
         } else {
 
-            /*
-             *
-             *    Do necessary database update
-             *
-             */
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Truck Successfully Added");
-            alert.showAndWait();
+            String arrivalTime = LocalDateTime.now().toString();
+
+            String trucklist = "*";
+
+            try {
+
+
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+                Statement st = conn.createStatement();
+                st.execute("INSERT INTO truck VALUES ('" + truckId.getText() + "','true','" + branch.getValue() + "','" + capacity.getText() + "','0','0','" + arrivalTime + "','*','*','*','0')");
+                st.execute("SELECT * FROM office");
+                ResultSet results = st.getResultSet();
+                while (results.next()) {
+                    if (results.getInt(1) == Integer.parseInt(branch.getValue())) {
+                        trucklist = results.getString(5) + truckId.getText() + ",";
+                        int officeIdValue = Integer.parseInt(branch.getValue());
+                        st.execute("UPDATE office SET truck_list=('" + trucklist + "')WHERE office_id=('" + officeIdValue + "')");
+                    }
+                }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Truck Successfully Added");
+                alert.setTitle("Success");
+                alert.showAndWait();
+            } catch (SQLException e) {
+                System.out.println("Something went wrong" + e.getMessage());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("There was some problem in adding Truck.");
+                alert.setTitle("Failure");
+                alert.showAndWait();
+            }
 
             truckId.clear();
             branch.getItems().clear();
             capacity.clear();
+
+            initialize();
 
         }
     }
