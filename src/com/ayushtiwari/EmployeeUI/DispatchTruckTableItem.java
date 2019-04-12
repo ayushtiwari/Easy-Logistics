@@ -15,6 +15,7 @@ public class DispatchTruckTableItem {
         this.destinationBranch = new SimpleStringProperty(destinationBranch);
         this.capacity = new SimpleStringProperty(Capacity);
         this.occupancy = new SimpleStringProperty(occupancy);
+        this.driverId = new SimpleStringProperty("");
     }
 
     public String getTruckId() {

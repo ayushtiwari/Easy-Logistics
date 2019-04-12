@@ -36,6 +36,8 @@ public class ConsignmentHistoryController implements Initializable {
     @FXML
     private TableColumn<ConsignmentTableItem, String> deliveryStatusColumn;
 
+    private int consignmentId = 0;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         consignmentIdColumn.setCellValueFactory(new PropertyValueFactory<ConsignmentTableItem, String>("id"));
@@ -45,7 +47,7 @@ public class ConsignmentHistoryController implements Initializable {
         dispatchStatusColumn.setCellValueFactory(new PropertyValueFactory<ConsignmentTableItem, String>("isDispatched"));
         deliveryStatusColumn.setCellValueFactory(new PropertyValueFactory<ConsignmentTableItem, String>("isDelivered"));
 
-        //loa
+
 
         tableView.setItems(getConsignments());
 
@@ -69,10 +71,12 @@ public class ConsignmentHistoryController implements Initializable {
 
                         //Query Database get Consignment by consignment Id
 
-                        controller.initData(2);
+                        controller.initData(Integer.parseInt(tableItem.getId()));
 
                         Stage stage = new Stage();
                         stage.setScene(individual);
+                        stage.setTitle("Consignment ID : " + tableItem.getId());
+                        stage.setResizable(false);
                         stage.show();
 
                     } catch (Exception e) {
@@ -93,15 +97,44 @@ public class ConsignmentHistoryController implements Initializable {
         int branchid = TransportData.getInstance().getOfficeId();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st = conn.createStatement();
-            st.execute("SELECT * FROM consignment");
-            ResultSet results = st.getResultSet();
-            while (results.next()) {
-                if (results.getInt(14) == branchid && results.getString(9).equals("true")) {
-                    consignmentTableItemObservableList.add(new ConsignmentTableItem(Integer.toString(results.getInt(1)), results.getString(3), Integer.toString(results.getInt(14)), Integer.toString(results.getInt(15)), results.getString(10), results.getString(9)));
-                }
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = connection.createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Consignments WHERE senderId=" + branchid + " OR receiverId=" + branchid + " ORDER BY _id DESC");
+
+            while (resultSet.next()) {
+
+                Statement statement1 = connection.createStatement();
+                ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Customers WHERE consignmentId=" + resultSet.getInt("_id"));
+
+
+                String delivaryStatus = "";
+                String dispatchStatus = "";
+
+                if (resultSet.getString("deliveryTime").equals("*")) delivaryStatus = "Not Yet Delivered";
+                else delivaryStatus = "Delivered";
+
+                if (resultSet.getString("dispatchTime").equals("*")) dispatchStatus = "Not Yet Dispatched";
+                else dispatchStatus = "Dispatched";
+
+                consignmentTableItemObservableList.add(
+
+
+                        new ConsignmentTableItem(
+                                resultSet.getInt("_id") + "",
+                                resultSet1.getString("name"),
+                                Integer.toString(resultSet.getInt("senderId")),
+                                Integer.toString(resultSet.getInt("receiverId")),
+                                delivaryStatus,
+                                dispatchStatus
+                        )
+                );
+
             }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
 
         } catch (SQLException e) {
             System.out.println("Something went wrong: " + e.getMessage());

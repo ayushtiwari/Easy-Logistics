@@ -118,7 +118,6 @@ public class ManagerSignUpController implements Initializable {
     @FXML
     public void onSignUp(ActionEvent event) throws Exception {
 
-        System.out.println("AlphaBeta");
         String managerName = name.getText();
         String managerEmail = email.getText();
         String managerUserName = userName.getText();
@@ -145,27 +144,26 @@ public class ManagerSignUpController implements Initializable {
                 repassword.validate();
             }
         } else if (!managerPassword.equals(managerRepassword)) {
-            System.out.println("bbbb");
             passwordSameLabel.setText("Password Confirmation Failed");
         } else if (managerPassword.equals(managerRepassword)) {
-            System.out.println("AlphaBeta");
+
             passwordSameLabel.setText(" ");
 
 
             //Enter data
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-                // Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
-                Statement st = conn.createStatement();
-                st.execute("INSERT INTO manager VALUES('" + managerName + "','" + managerEmail + "','" + managerUserName + "','" + managerPassword + "')");
-                st.close();
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+                Statement statement = conn.createStatement();
+
+                statement.execute("INSERT INTO Manager VALUES('" + managerName + "','" + managerUserName + "','" + managerPassword + "','" + managerEmail + "')");
+
+                statement.close();
                 conn.close();
-                System.out.println("AlphaBEta");
+
+
                 Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
-                System.out.println("AlphaBEta");
                 Scene dashboardScene = new Scene(dashboard);
                 Stage dashboardWindow = new Stage();
-                System.out.println("AlphaBEta");
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 window.hide();
                 dashboardWindow.setScene(dashboardScene);
@@ -173,6 +171,8 @@ public class ManagerSignUpController implements Initializable {
                 dashboardWindow.setMaxHeight(728);
                 dashboardWindow.setMaxWidth(1366);
                 dashboardWindow.show();
+
+
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -181,8 +181,6 @@ public class ManagerSignUpController implements Initializable {
 
             }
 //
-//
-
         }
     }
 

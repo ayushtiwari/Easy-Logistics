@@ -1,14 +1,22 @@
 
 package com.ayushtiwari.ManagerUI;
 
+import com.ayushtiwari.EmployeeUI.IndividualConsignmentDisplayController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ConsignmentTableController {
 
@@ -44,6 +52,44 @@ public class ConsignmentTableController {
 
         tableView.setItems(populate());
 
+        tableView.setRowFactory(tv -> {
+            TableRow<com.ayushtiwari.ManagerUI.ConsignmentTableItem> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    com.ayushtiwari.ManagerUI.ConsignmentTableItem tableItem = row.getItem();
+                    try {
+
+
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(getClass().getResource("../EmployeeUI/individualConsignmentDisplay.fxml"));
+                        Parent individualScene = loader.load();
+
+                        Scene individual = new Scene(individualScene);
+
+                        IndividualConsignmentDisplayController controller = loader.getController();
+
+                        //Query Database get Consignment by consignment Id
+
+                        controller.initData(Integer.parseInt(tableItem.getId()));
+
+                        Stage stage = new Stage();
+                        stage.setScene(individual);
+                        stage.setTitle("Consignment ID : " + tableItem.getId());
+                        stage.setResizable(false);
+                        stage.show();
+
+                    } catch (Exception e) {
+                        System.out.println("Error");
+                    }
+                }
+
+            });
+            return row;
+        });
+
+
+
     }
 
     public ObservableList<ConsignmentTableItem> populate() {
@@ -51,35 +97,42 @@ public class ConsignmentTableController {
         ObservableList<ConsignmentTableItem> observableList = FXCollections.observableArrayList();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
             Statement st = conn.createStatement();
-            st.execute("SELECT * FROM consignment");
+            st.execute("SELECT * FROM Consignments");
             ResultSet results = st.getResultSet();
             System.out.println("AlphaBetaGamma");
             while (results.next()) {
-                System.out.println(results.getInt(1));//consignment_id
-                System.out.println(results.getInt(2));//volume
-                System.out.println(results.getString(3));//senders name
-                System.out.println(results.getString(11));//arrival time
-                System.out.println(results.getString(12));//departure time
-                System.out.println(results.getInt(14));//sending officeid
-                System.out.println(results.getInt(15));//recieving officeid
 
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT name FROM Customers WHERE consignmentId=" + results.getInt("_id"));
+
+                LocalDateTime arrival = LocalDateTime.parse(results.getString("arrivalTime"));
+                LocalDateTime dispatch = LocalDateTime.parse(results.getString("dispatchTime"));
+
+
+                //Create formatter
+                DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy 'at' hh:mm a");
+
+//
+
+                String arrivalT = arrival.format(FOMATTER);
+                String departT = dispatch.format(FOMATTER);
 
                 observableList.add(
                         new ConsignmentTableItem(
-                                Integer.toString(results.getInt(1)),
-                                results.getString(3),
-                                Integer.toString(results.getInt(14)),
-                                Integer.toString(results.getInt(15)),
-                                results.getString(11),
-                                results.getString(12)
+                                Integer.toString(results.getInt("_id")),
+                                resultSet.getString("name"),
+                                Integer.toString(results.getInt("senderId")),
+                                Integer.toString(results.getInt("receiverId")),
+                                arrivalT,
+                                departT
                         )
                 );
 
             }
         } catch (SQLException e) {
-            System.out.println("something went wrong");
+            System.out.println(e.getMessage());
         }
 
         return observableList;

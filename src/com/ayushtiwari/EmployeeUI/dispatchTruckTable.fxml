@@ -21,11 +21,10 @@
         </HBox>
         <TableView fx:id="tableView" prefHeight="581.0" prefWidth="1070.0">
             <columns>
-                <TableColumn fx:id="truckID" prefWidth="230.0" text="Truck ID"/>
-                <TableColumn fx:id="destinationBranch" minWidth="0.0" prefWidth="210.0" text="Destination Branch"/>
-                <TableColumn fx:id="Capacity" prefWidth="210.0" text="Capacity"/>
-                <TableColumn fx:id="occupancy" prefWidth="210.0" text="Occupancy"/>
-                <TableColumn fx:id="driverId" prefWidth="210.0" text="Driver ID"/>
+                <TableColumn fx:id="truckID" prefWidth="270.0" text="Truck ID"/>
+                <TableColumn fx:id="destinationBranch" minWidth="0.0" prefWidth="270.0" text="Destination Branch"/>
+                <TableColumn fx:id="Capacity" prefWidth="270.0" text="Capacity"/>
+                <TableColumn fx:id="occupancy" prefWidth="270.0" text="Occupancy"/>
             </columns>
         </TableView>
     </children>

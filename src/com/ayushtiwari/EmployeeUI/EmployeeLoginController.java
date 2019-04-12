@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -39,13 +40,12 @@ public class EmployeeLoginController {
     public void initialize() {
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
             Statement st = conn.createStatement();
-            st.execute("SELECT * FROM office");
+            st.execute("SELECT * FROM Offices");
             ResultSet results = st.getResultSet();
             while (results.next()) {
                 int branchid = results.getInt(1);
-
                 branch.getItems().add(Integer.toString(branchid));
             }
         } catch (SQLException s) {
@@ -95,7 +95,6 @@ public class EmployeeLoginController {
 
     public void onLogin(ActionEvent event) throws Exception {
 
-        String employeeBranch = branch.getValue();
         String employeeUserName = userName.getText();
         String employeePassWord = password.getText();
 
@@ -109,63 +108,20 @@ public class EmployeeLoginController {
 
 
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-                Statement st = conn.createStatement();
-                st.execute("SELECT * FROM employee");
-                ResultSet results = st.getResultSet();
-                while (results.next()) {
-                    boolean a = employeeUserName.equals(results.getString(4)) && employeePassWord.equals(results.getString(5));
-                    detailsCorrect = a && employeeBranch.equals(Integer.toString(results.getInt(3)));
-                    if (detailsCorrect == true) break;
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+                Statement statement = connection.createStatement();
+
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM Employees WHERE userName = '" + employeeUserName + "'");
+
+                if (resultSet.getString(3).equals(employeeUserName) && resultSet.getString(4).equals(employeePassWord)) {
+                    detailsCorrect = true;
                 }
-            } catch (SQLException e) {
-                System.out.println("Something went wrong");
-            }
-               
+
                 if (detailsCorrect) {
-                    /*
-                    //get Branch Details
-                    //getEmployee Details
-                    */
 
-                    // String truckList = "", consignmentList = "", employeeList = "", employeeId = "";
-//                    try {
-//                        Connection conn1 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-//                        Statement st1 = conn1.createStatement();
-//                        st1.execute("SELECT * FROM office");
-//                        ResultSet results1 = st1.getResultSet();
-//                        while (results1.next()) {
-//
-//                            if (results1.getInt(1) == Integer.parseInt(branch.getValue())) {
-//                                truckList = results1.getString(5);
-//                                consignmentList = results1.getString(6);
-//                                employeeList = results1.getString(2);
-//                            }
-//                        }
-//
-//
-//                        st1.close();
-//                        conn1.close();
-//                        } catch (SQLException e) {
-//                        System.out.println("alphabetagamma");
-//                        System.out.println("Something went wrong" + e.getMessage());
-//                    }
-
-                /*    Connection conn3 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-                    Statement st3 = conn.createStatement();
-                    st.execute("SELECT * FROM employee");
-                    ResultSet results3 = st.getResultSet();
-                    while (results3.next()) {
-                        if (results3.getString(4).equals(userName.getText())) {
-                            employeeId = results3.getString(1);
-                        }
-
-                    }*/
-                    TransportData.getInstance().setOfficeId(Integer.parseInt(branch.getValue()));
-                    TransportData.getInstance().setEmployeeUserName(userName.getText());
-
-                    //System.out.println(TransportData.getInstance().getEmployeeId());
-                    //System.out.println(TransportData.getInstance().getOfficeId());
+                    TransportData.getInstance().setOfficeId(resultSet.getInt(5));
+                    TransportData.getInstance().setEmployeeUserName(resultSet.getString(3));
+                    TransportData.getInstance().setEmployeeId(resultSet.getInt(1));
 
                     Parent employeeDashboard = FXMLLoader.load(getClass().getResource("employeeDashboard.fxml"));
                     Scene dashboard = new Scene(employeeDashboard);
@@ -182,13 +138,15 @@ public class EmployeeLoginController {
                 } else {
                     incorrectDetails.setText("Incorrect Details");
                 }
-         /*    catch (SQLException e) {
+                resultSet.close();
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
                 alert.setTitle("Error");
-                alert.setContentText("Something went wrong. Please try again.");
-                System.out.println("Something went wrong: " + e.getMessage());
-            }*/
-
+                alert.showAndWait();
+            }
 
 
         }

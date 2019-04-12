@@ -51,16 +51,21 @@ public class ReceiveTruckTableController {
                     ReceiveTruckTableItem tableItem = row.getItem();
                     try {
 
+                        System.out.println("Truck id = " + tableItem.getTruckId());
 
                         FXMLLoader loader = new FXMLLoader();
-                        loader.setLocation(getClass().getResource("individualReceiveTruck.fxml"));
+                        loader.setLocation(getClass().getResource("individualTruckReceive.fxml"));
                         Parent individualScene = loader.load();
+
+                        System.out.println("Truck id = " + tableItem.getTruckId());
 
                         Scene individual = new Scene(individualScene);
 
                         IndividualTruckReceiveController controller = loader.getController();
 
-                        controller.initData(tableItem.getTruckId());
+                        System.out.println("Truck id = " + tableItem.getTruckId());
+
+                        controller.initData(Integer.parseInt(tableItem.getTruckId()));
 
                         Stage stage = new Stage();
                         stage.initModality(Modality.WINDOW_MODAL);
@@ -84,28 +89,30 @@ public class ReceiveTruckTableController {
 
         int branchId = TransportData.getInstance().getOfficeId();
         try {
-            Connection conn1 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st1 = conn1.createStatement();
-            st1.execute("SELECT * FROM truck");
-            ResultSet results1 = st1.getResultSet();
-            while (results1.next()) {
-                if (results1.getInt(11) == branchId) {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = connection.createStatement();
 
-                    observableList.add(new ReceiveTruckTableItem(
-                            Integer.toString(results1.getInt(1)),
-                            Integer.toString(results1.getInt(3)),
-                            Integer.toString(results1.getInt(11)))
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Trucks WHERE nextBranchID=" + branchId);
+
+
+            while (resultSet.next()) {
+
+                if (!resultSet.getString("departureTime").equals("*"))
+
+                    observableList.add(
+
+                            new ReceiveTruckTableItem(
+                                    resultSet.getInt("_id") + "",
+                                    resultSet.getInt("currentBranchID") + "",
+                                    resultSet.getInt("currentOccupancy") + ""
+                            )
                     );
 
-
-                }
-
-
             }
-        } catch (SQLException e) {
 
+        } catch (SQLException se) {
+            System.out.println(se.getMessage());
         }
-
         return observableList;
 
 

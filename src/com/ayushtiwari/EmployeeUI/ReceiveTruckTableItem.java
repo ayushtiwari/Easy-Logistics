@@ -14,6 +14,7 @@ public class ReceiveTruckTableItem {
         this.truckId = new SimpleStringProperty(truckId);
         this.sendingBranch = new SimpleStringProperty(sendingBranch);
         this.volumeFilled = new SimpleStringProperty(occupancy);
+
     }
 
     public String getTruckId() {

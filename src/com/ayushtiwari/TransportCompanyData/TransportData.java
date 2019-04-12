@@ -22,6 +22,7 @@ public class TransportData {
         this.employeeUserName = employeeUserName;
     }
 
+
     public static TransportData getInstance() {
         return instance;
     }

@@ -12,10 +12,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class NewBranchController {
 
@@ -32,6 +29,8 @@ public class NewBranchController {
     private JFXTextField cityName;
 
     public void initialize() {
+
+
         RequiredFieldValidator validator = new RequiredFieldValidator();
         branchId.getValidators().add(validator);
         validator.setMessage("Required");
@@ -65,48 +64,71 @@ public class NewBranchController {
             }
         });
 
+        int branchCount = 1;
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Offices");
+
+            while (resultSet.next()) {
+                branchCount++;
+            }
+
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Branch addition failure." + e.getMessage());
+            alert.setTitle("Failed");
+            alert.showAndWait();
+        }
+
+        branchId.setText(branchCount + "");
+        branchId.setDisable(true);
+
 
     }
 
     @FXML
     public void handleOnSubmit() {
-        String branchid=branchId.getText();
+        int branchid = Integer.parseInt(branchId.getText());
         String cityname=cityName.getText();
         String streetname=streetName.getText();
+
         if (branchId.getText().trim().isEmpty() || cityName.getText().isEmpty() || streetName.getText().isEmpty()) {
             if (branchId.getText().trim().isEmpty()) branchId.validate();
             if (cityName.getText().trim().isEmpty()) cityName.validate();
             if (streetName.getText().trim().isEmpty()) streetName.validate();
         } else {
-            //Add Branch to database
+
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-                //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
                 Statement st = conn.createStatement();
-                st.execute("INSERT INTO office VALUES ('" + branchid + "','*','" + streetname + "','" + cityname + "','*','*','*','*',1)");
-                // st.execute("INSERT INTO office VALUES (1,'NULL','ehfuef','oiivn','NULL','NULL')");
+
+
+                st.execute("INSERT INTO Offices VALUES ('" + branchid + "','" + streetname + "','" + cityname + "')");
+
+
                 st.close();
                 conn.close();
-                //System.out.println("AlpahBeta");
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Branch Succesfully Added");
                 alert.setTitle("Success");
                 alert.showAndWait();
+                branchId.clear();
+                cityName.clear();
+                streetName.clear();
 
             } catch (SQLException e) {
-                System.out.println("Something went wrong: " + e.getMessage());
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Branch addition failure.");
+                alert.setContentText("Branch addition failure." + e.getMessage());
                 alert.setTitle("Failed");
                 alert.showAndWait();
             }
 
 
-            branchId.clear();
-            cityName.clear();
-            streetName.clear();
-
+            initialize();
 
         }
     }

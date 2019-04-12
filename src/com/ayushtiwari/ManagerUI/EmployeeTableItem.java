@@ -7,12 +7,26 @@ public class EmployeeTableItem {
     private SimpleStringProperty branch;
     private SimpleStringProperty employeeId;
     private SimpleStringProperty userName;
+    private SimpleStringProperty password;
 
-    public EmployeeTableItem(String name, String branch, String employeeId, String userName) {
+    public EmployeeTableItem(String name, String branch, String employeeId, String userName, String password) {
         this.name = new SimpleStringProperty(name);
         this.branch = new SimpleStringProperty(branch);
         this.employeeId = new SimpleStringProperty(employeeId);
         this.userName = new SimpleStringProperty(userName);
+        this.password = new SimpleStringProperty(password);
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public void setPassword(String password) {
+        this.password.set(password);
+    }
+
+    public SimpleStringProperty passwordProperty() {
+        return password;
     }
 
     public String getUserName() {

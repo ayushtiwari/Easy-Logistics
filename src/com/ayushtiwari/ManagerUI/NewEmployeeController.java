@@ -27,6 +27,8 @@ public class NewEmployeeController {
     @FXML
     private JFXTextField password;
 
+    private int employeeCount = 1;
+
     public void initialize() {
 
 
@@ -39,21 +41,27 @@ public class NewEmployeeController {
         * }
         *
          */
+
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st = conn.createStatement();
-            st.execute("SELECT * FROM office");
-            ResultSet results = st.getResultSet();
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = conn.createStatement();
+
+            ResultSet results = statement.executeQuery("SELECT * FROM Offices");
             while (results.next()) {
                 int branchid = results.getInt(1);
-
                 branch.getItems().add(Integer.toString(branchid));
             }
-            st.close();
+
+            results = statement.executeQuery("SELECT * FROM Employees");
+            while (results.next()) employeeCount++;
+            statement.close();
             conn.close();
         } catch (SQLException s) {
             System.out.println("Error accessing Database" + s.getMessage());
         }
+
+        employeeId.setText(employeeCount + "");
+        employeeId.setDisable(true);
 
         RequiredFieldValidator validator = new RequiredFieldValidator();
         employeeId.getValidators().add(validator);
@@ -135,45 +143,37 @@ public class NewEmployeeController {
 
             //Add Employee To database
             try {
-                System.out.println("Alphabetad");
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
                 Statement st = conn.createStatement();
-                System.out.println("Alphabetad");
-                st.execute("INSERT INTO  employee VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + branch.getValue() + "','" + userName.getText() + "','" + password.getText() + "')");
-                st.execute("SELECT * FROM office");
-                System.out.println("Alphabetad");
-                ResultSet results = st.getResultSet();
-                while (results.next()) {
-                    System.out.println("Alphabetad");
-                    if (results.getInt(1) == Integer.parseInt(branch.getValue())) {
-                        employeelist = results.getString(2) + employeeId.getText() + ",";
-                        System.out.println(employeelist);
-                        int officeIdValue = Integer.parseInt(branch.getValue());
-                        //st.execute("INSERT INTO office(employee_list)VALUE('"+employeelist+"') WHERE office_id=Integer.parseInt(branch.getValue())");
-                        st.execute("UPDATE office SET employee_list=('" + employeelist + "') WHERE office_id=('" + officeIdValue + "')");
-                    }
-                }
+
+                st.execute("INSERT INTO  Employees VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + userName.getText() + "','" + password.getText() + "','" + branch.getValue() + "')");
+
+
                 st.close();
                 conn.close();
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Employee Successfully Created");
                 alert.setTitle("Success");
                 alert.showAndWait();
+                employeeId.clear();
+                password.clear();
+                userName.clear();
+                branch.getSelectionModel().clearSelection();
+                name.clear();
+
+                employeeCount++;
+                employeeId.setText(employeeCount + "");
+                employeeId.setDisable(true);
             } catch (SQLException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("There was some problem in adding new Employee.");
+                alert.setContentText("There was some problem in adding new Employee." + e.getMessage());
                 alert.setTitle("Failed");
                 alert.showAndWait();
-                System.out.println("Something went wrong" + e.getMessage());
             }
 
 
-            employeeId.clear();
-            password.clear();
-            userName.clear();
-            branch.getSelectionModel().clearSelection();
-            name.clear();
-            initialize();
+
 
         }
     }

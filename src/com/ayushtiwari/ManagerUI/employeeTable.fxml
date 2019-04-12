@@ -8,10 +8,11 @@
     <children>
         <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" prefHeight="651.0" prefWidth="1080.0">
             <columns>
-                <TableColumn fx:id="employeeIdColumn" prefWidth="270.0" text="Employee ID"/>
-                <TableColumn fx:id="employeeNameColumn" minWidth="0.0" prefWidth="270.0" text="Employee Name"/>
-                <TableColumn fx:id="branchColumn" prefWidth="270.0" text="Branch"/>
-                <TableColumn fx:id="userNameColumn" prefWidth="270.0" text="User Name"/>
+                <TableColumn fx:id="employeeIdColumn" prefWidth="216.0" text="Employee ID"/>
+                <TableColumn fx:id="employeeNameColumn" minWidth="0.0" prefWidth="216.0" text="Employee Name"/>
+                <TableColumn fx:id="branchColumn" prefWidth="216.0" text="Branch"/>
+                <TableColumn fx:id="userNameColumn" prefWidth="216.0" text="User Name"/>
+                <TableColumn fx:id="password" prefWidth="216.0" text="Password"/>
             </columns>
         </TableView>
     </children>

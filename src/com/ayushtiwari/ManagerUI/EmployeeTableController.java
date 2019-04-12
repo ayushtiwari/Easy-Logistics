@@ -4,6 +4,7 @@ package com.ayushtiwari.ManagerUI;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,11 +28,15 @@ public class EmployeeTableController {
     @FXML
     private TableColumn<EmployeeTableItem, String> userNameColumn;
 
+    @FXML
+    private TableColumn<EmployeeTableItem, String> password;
+
     public void initialize() {
         employeeIdColumn.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
         employeeNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         branchColumn.setCellValueFactory(new PropertyValueFactory<>("branch"));
         userNameColumn.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        password.setCellValueFactory(new PropertyValueFactory<>("password"));
 
         tableView.setItems(populate());
     }
@@ -40,40 +45,30 @@ public class EmployeeTableController {
 
         ObservableList<EmployeeTableItem> observableList = FXCollections.observableArrayList();
 
-        String employeeIdValue, nameValue, branchValue, userNameValue, cityName = "";
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st = conn.createStatement();
-            st.execute("SELECT * FROM employee");
-            ResultSet results = st.getResultSet();
-            Statement st1 = conn.createStatement();
-            st1.execute("SELECT * FROM office");
-            ResultSet results1 = st1.getResultSet();
-            while (results.next()) {
-                employeeIdValue = Integer.toString(results.getInt(1));
-//                System.out.println(results.getInt(1));   //employee id
-                nameValue = results.getString(2);  //employee name
-                branchValue = Integer.toString(results.getInt(3)); //branch_id
-                userNameValue = results.getString(4); //username
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
 
-                int branchid = results.getInt(3);
+            Statement statement = connection.createStatement();
 
-                while (results1.next()) {
-                    if (results1.getInt(1) == branchid) {
-                        cityName = results1.getString(4);//cityname
-                    }
-                }
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Employees");
 
-                observableList.add(new EmployeeTableItem(nameValue, branchid + " - " + cityName, employeeIdValue, userNameValue));
+            while (resultSet.next()) {
 
-                st1.execute("SELECT * FROM office");
-                results1 = st1.getResultSet();
+                observableList.add(new EmployeeTableItem(
+                        resultSet.getString("name"),
+                        resultSet.getString("branchId"),
+                        resultSet.getString("_id"),
+                        resultSet.getString("userName"),
+                        resultSet.getString("password")
+                ));
+
             }
-            st.close();
-            conn.close();
+
         } catch (SQLException e) {
-            System.out.println("Something went wrong" + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText(e.getMessage());
         }
         return observableList;
     }

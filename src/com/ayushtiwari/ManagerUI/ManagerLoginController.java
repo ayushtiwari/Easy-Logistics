@@ -73,8 +73,8 @@ public class ManagerLoginController {
 
 
         if (managerUserName.trim().isEmpty() || managerPassword.trim().isEmpty()) {
-            //No Action
-            System.out.println("Invalid Inputs");
+
+
         } else {
             /*
             Check if Password is correct
@@ -82,17 +82,22 @@ public class ManagerLoginController {
 
 
             try {
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-                //Connection conn = DriverManager.getConnection("jdbc:sqlite:C://Users//Nikhil//Desktop//TransportCompany//database1.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+
                 Statement st = conn.createStatement();
-                st.execute("SELECT * FROM manager");
+                st.execute("SELECT * FROM Manager");
+
+
                 ResultSet results = st.getResultSet();
-                detailsCorrect = managerUserName.equals(results.getString(3)) && managerPassword.equals(results.getString(4));
+                detailsCorrect = managerUserName.equals(results.getString(2)) && managerPassword.equals(results.getString(3));
+
+
+
                 st.close();
                 conn.close();
+
+
                 if (detailsCorrect) {
-
-
                     Parent dashboard = FXMLLoader.load(getClass().getResource("managerDashboard.fxml"));
                     Scene dashboardScene = new Scene(dashboard);
                     Stage windowDashboard = new Stage();
@@ -103,15 +108,16 @@ public class ManagerLoginController {
                     window.setMaxWidth(1366);
                     windowDashboard.show();
                 } else {
-                    incorrectDetails.setText("Incorrect Details");
+
+
                 }
+
             } catch (SQLException e) {
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
-                alert.setContentText("Something went wrong. Please try again.");
+                alert.setContentText("Something went wrong. Please try again." + e.getMessage());
                 alert.showAndWait();
-                System.out.println("Something went wrong: " + e.getMessage());
-                System.out.println("Something went wrong: " + e.getMessage());
             }
 
         }

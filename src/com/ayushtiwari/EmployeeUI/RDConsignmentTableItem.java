@@ -1,15 +1,14 @@
 package com.ayushtiwari.EmployeeUI;
 
-import com.ayushtiwari.TransportClasses.Consignment;
 import javafx.beans.property.SimpleStringProperty;
 
 public class RDConsignmentTableItem {
     private SimpleStringProperty consignmentId;
     private SimpleStringProperty volume;
 
-    public RDConsignmentTableItem(Consignment consignment) {
-        this.consignmentId = new SimpleStringProperty(Integer.toString(consignment.getConsignmentId()));
-        this.volume = new SimpleStringProperty(Integer.toString(consignment.getVolume()));
+    public RDConsignmentTableItem(String consignmentId, String consignmentVolume) {
+        this.consignmentId = new SimpleStringProperty(consignmentId);
+        this.volume = new SimpleStringProperty(consignmentVolume);
     }
 
     public String getConsignmentId() {

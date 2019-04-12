@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
@@ -61,10 +62,15 @@ public class DispatchTruckTableController {
                         Scene individual = new Scene(individualScene);
 
                         IndividualTruckDispatchController controller = loader.getController();
+                        System.out.println("Truck Id = " + tableItem.getTruckId());
+                        controller.initData(Integer.parseInt(tableItem.getTruckId()));
 
-                        controller.initData(tableItem.getTruckId());
 
+                        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         Stage stage = new Stage();
+                        stage.initOwner(window);
+
+
                         stage.initModality(Modality.WINDOW_MODAL);
                         stage.setScene(individual);
                         stage.show();
@@ -88,26 +94,29 @@ public class DispatchTruckTableController {
 
 
         try {
-            Connection conn1 = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st1 = conn1.createStatement();
-            st1.execute("SELECT * FROM truck");
-            ResultSet results1 = st1.getResultSet();
-            while (results1.next()) {
-                if (results1.getInt(3) == branchId) {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = connection.createStatement();
 
-                    observableList.add(new DispatchTruckTableItem(
-                            Integer.toString(results1.getInt(1)),
-                            Integer.toString(results1.getInt(10)),
-                            Integer.toString(results1.getInt(4)),
-                            Integer.toString(results1.getInt(11))));
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Trucks WHERE currentBranchID=" + branchId + " AND currentOccupancy>0 AND departureTime='*'");
 
 
-                }
+            while (resultSet.next()) {
 
+
+                observableList.add(
+                        new DispatchTruckTableItem(
+                                resultSet.getInt("_id") + "",
+                                resultSet.getInt("nextBranchID") + "",
+                                resultSet.getInt("capacity") + "",
+                                resultSet.getInt("currentOccupancy") + ""
+                        )
+                );
 
             }
-        } catch (SQLException e) {
 
+        } catch (SQLException se) {
+            System.out.println(se.getMessage()
+            );
         }
 
         return observableList;

@@ -10,13 +10,13 @@ public class TruckTableItem {
     private SimpleStringProperty occupancy;
     private SimpleStringProperty capacity;
 
-    public TruckTableItem(int truckId, long idleHours, long idleMinutes, int currentBranchId, String currentBranchCityName, int occupancy, int capacity) {
+    public TruckTableItem(int truckId, int idleTime, int currentBranchId, int occupancy, int capacity) {
         this.truckId = new SimpleStringProperty(Integer.toString(truckId));
 
-        this.averageTruckIdleTime = new SimpleStringProperty(idleHours + "h " + idleMinutes + "m");
+        this.averageTruckIdleTime = new SimpleStringProperty(idleTime + "");
         this.capacity = new SimpleStringProperty(Integer.toString(capacity));
         this.occupancy = new SimpleStringProperty(Integer.toString(occupancy));
-        this.currentBranch = new SimpleStringProperty(currentBranchId + " - " + currentBranchCityName);
+        this.currentBranch = new SimpleStringProperty(Integer.toString(currentBranchId));
     }
 
     public String getTruckId() {

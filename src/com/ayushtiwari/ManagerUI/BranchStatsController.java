@@ -43,28 +43,37 @@ public class BranchStatsController {
         ObservableList<BranchStatsTableItem> observableList = FXCollections.observableArrayList();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
             Statement st = conn.createStatement();
-            st.execute("SELECT * FROM office");
+            st.execute("SELECT * FROM Offices");
             ResultSet results = st.getResultSet();
+
+
             while (results.next()) {
-                String b = Integer.toString(results.getInt(1));
-                System.out.println(results.getString(2));
-                String x = results.getString(3);   //street name
-                String y = results.getString(4);   //city name
-                String z = results.getString(2);
+                System.out.println("alpha");
 
-                if (z.equals("*")) {
-                    observableList.add(new BranchStatsTableItem("Office No : " + b, x, y, "0"));
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery("SELECT * FROM Employees WHERE branchId=" + results.getInt(1));
 
-                } else {
-                    observableList.add(new BranchStatsTableItem("Office No : " + b, x, y, Integer.toString(z.split(",").length)));
-                }
+                System.out.println("alpha");
+                int empCount = 0;
 
+                while (resultSet.next()) empCount++;
 
+                System.out.println("alpha");
+
+                observableList.add(new BranchStatsTableItem(Integer.toString(results.getInt("_id")), results.getString("street"), results.getString("city"), Integer.toString(empCount)));
+
+                System.out.println("alpha");
+                resultSet.close();
+                statement.close();
             }
+
+            results.close();
+            st.close();
+            conn.close();
         } catch (SQLException e) {
-            System.out.println("something went wrong");
+            System.out.println(e.getMessage());
         }
 
 

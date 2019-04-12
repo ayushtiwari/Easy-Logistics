@@ -47,7 +47,8 @@
                                text="a" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                     </children>
                 </GridPane>
-                <JFXButton fx:id="receiveTruck" layoutX="194.0" layoutY="503.0" prefHeight="38.0" prefWidth="201.0"
+                <JFXButton fx:id="receiveTruck" onAction="#onReceiveClicked" layoutX="194.0" layoutY="503.0"
+                           prefHeight="38.0" prefWidth="201.0"
                            style="-fx-background-color: #f9d348;" text="Receive Truck"/>
                 <TableView fx:id="tableView" layoutY="188.0" maxHeight="1.7976931348623157E308" prefHeight="286.0"
                            prefWidth="589.0" style="-fx-border-color: white;">

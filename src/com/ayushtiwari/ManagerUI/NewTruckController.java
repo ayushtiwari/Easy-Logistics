@@ -25,19 +25,27 @@ public class NewTruckController {
     @FXML
     private JFXComboBox<String> branch;
 
+    private int truckCount = 1;
+
 
     public void initialize() {
 
-
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
-            Statement st = conn.createStatement();
-            st.execute("SELECT * FROM office");
-            ResultSet results = st.getResultSet();
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
+            Statement statement = connection.createStatement();
+
+            statement.execute("SELECT * FROM Offices");
+            ResultSet results = statement.getResultSet();
+
             while (results.next()) {
                 int branchid = results.getInt(1);
                 branch.getItems().add(Integer.toString(branchid));
             }
+
+            results = statement.executeQuery("SELECT * FROM Trucks");
+            while (results.next()) truckCount++;
+
+
         } catch (SQLException s) {
             System.out.println("Error accessing Database" + s.getMessage());
         }
@@ -56,6 +64,8 @@ public class NewTruckController {
             }
         });
 
+        truckId.setText(truckCount + "");
+        truckId.setDisable(true);
         RequiredFieldValidator validator1 = new RequiredFieldValidator();
         branch.getValidators().add(validator);
         validator1.setMessage("Required");
@@ -99,35 +109,37 @@ public class NewTruckController {
             try {
 
 
-                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/database1-2.db");
+                Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
                 Statement st = conn.createStatement();
-                st.execute("INSERT INTO truck VALUES ('" + truckId.getText() + "','true','" + branch.getValue() + "','" + capacity.getText() + "','0','0','" + arrivalTime + "','*','*','*','0')");
-                st.execute("SELECT * FROM office");
-                ResultSet results = st.getResultSet();
-                while (results.next()) {
-                    if (results.getInt(1) == Integer.parseInt(branch.getValue())) {
-                        trucklist = results.getString(5) + truckId.getText() + ",";
-                        int officeIdValue = Integer.parseInt(branch.getValue());
-                        st.execute("UPDATE office SET truck_list=('" + trucklist + "')WHERE office_id=('" + officeIdValue + "')");
-                    }
-                }
+
+                st.execute("INSERT INTO Trucks VALUES (" + Integer.parseInt(truckId.getText()) + "," + Integer.parseInt(branch.getValue()) + "," + "-1" + "," + 0 + "," + Integer.parseInt(capacity.getText()) + ",'" + LocalDateTime.now().toString() + "'," + "'*'" + "," + 0 + ")");
+
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Truck Successfully Added");
                 alert.setTitle("Success");
                 alert.showAndWait();
+
+                truckId.clear();
+                branch.setValue("");
+                capacity.clear();
+
+                truckCount++;
+
+                truckId.setText(truckCount + "");
+                truckId.setDisable(true);
+
             } catch (SQLException e) {
+
                 System.out.println("Something went wrong" + e.getMessage());
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("There was some problem in adding Truck.");
                 alert.setTitle("Failure");
                 alert.showAndWait();
+
             }
 
-            truckId.clear();
-            branch.getItems().clear();
-            capacity.clear();
 
-            initialize();
 
         }
     }
