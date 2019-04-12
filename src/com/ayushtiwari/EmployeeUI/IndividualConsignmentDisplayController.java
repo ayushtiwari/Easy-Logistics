@@ -79,7 +79,7 @@ public class IndividualConsignmentDisplayController implements Initializable {
 
             System.out.println("d");
 
-            ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Customers WHERE consignmentId=" + consignment);
+            ResultSet resultSet1 = statement1.executeQuery("SELECT * FROM Customers ");
 
             System.out.println("e");
 
@@ -91,8 +91,10 @@ public class IndividualConsignmentDisplayController implements Initializable {
             senderAddress.setText(resultSet1.getString("street") + resultSet1.getString("city"));
 
             System.out.println("f");
-
             resultSet1.next();
+            resultSet1.next();
+
+            System.out.println(resultSet1.getString("name"));
             receiverName.setText(resultSet1.getString("name"));
             receiverAddress.setText(resultSet1.getString("street") + resultSet1.getString("city"));
 
