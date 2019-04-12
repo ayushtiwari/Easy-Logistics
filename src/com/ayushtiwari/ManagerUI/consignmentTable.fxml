@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.FlowPane?>
+<FlowPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+          minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171"
+          fx:controller="com.ayushtiwari.ManagerUI.ConsignmentTableController">
+    <children>
+        <TableView fx:id="tableView" maxHeight="1.7976931348623157E308" prefHeight="651.0" prefWidth="1080.0">
+            <columns>
+                <TableColumn fx:id="consignmentIdColumn" prefWidth="100.0" text="Consignment ID"/>
+                <TableColumn fx:id="senderNameColumn" minWidth="0.0" prefWidth="250.0" text="Senders Name"/>
+                <TableColumn fx:id="sendingOfficeColumn" prefWidth="150.0" text="Sending Office"/>
+                <TableColumn fx:id="receivingOfficeColumn" prefWidth="150.0" text="Receiving Office"/>
+                <TableColumn fx:id="arrivalTime" prefWidth="215.0" text="Arrival Time"/>
+                <TableColumn fx:id="dispatchTime" prefWidth="215.0" text="Dispatch Time"/>
+            </columns>
+        </TableView>
+    </children>
+</FlowPane>
