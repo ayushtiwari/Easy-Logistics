@@ -1,17 +1,30 @@
 package com.ayushtiwari.EmployeeUI;
 
-import com.ayushtiwari.TransportClasses.Customer;
 import javafx.beans.property.SimpleStringProperty;
 
 public class CustomerTableItem {
     private SimpleStringProperty name;
     private SimpleStringProperty streetName;
     private SimpleStringProperty cityName;
+    private SimpleStringProperty consignmentId;
 
-    public CustomerTableItem(Customer customer) {
-        this.name = new SimpleStringProperty(customer.getName());
-        this.streetName = new SimpleStringProperty(customer.getAddress().getStreet());
-        this.cityName = new SimpleStringProperty(customer.getAddress().getCity());
+    public CustomerTableItem(String name, String street, String city, String consignmentId) {
+        this.name = new SimpleStringProperty(name);
+        this.streetName = new SimpleStringProperty(street);
+        this.cityName = new SimpleStringProperty(city);
+        this.consignmentId = new SimpleStringProperty(consignmentId);
+    }
+
+    public String getConsignmentId() {
+        return consignmentId.get();
+    }
+
+    public void setConsignmentId(String consignmentId) {
+        this.consignmentId.set(consignmentId);
+    }
+
+    public SimpleStringProperty consignmentIdProperty() {
+        return consignmentId;
     }
 
     public String getName() {
