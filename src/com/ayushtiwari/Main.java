@@ -28,6 +28,9 @@ public class Main extends Application {
         st.execute("SELECT * FROM manager");
         ResultSet results = st.getResultSet();
         managerExists = results.next();
+        results.close();
+        st.close();
+        conn.close();
 
 
         if (managerExists) {

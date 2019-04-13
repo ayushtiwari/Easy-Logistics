@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class IndividualConsignmentDisplayController implements Initializable {
@@ -114,7 +116,12 @@ public class IndividualConsignmentDisplayController implements Initializable {
             if (resultSet.getString("deliveryTime").equals("*")) {
                 deliveryStatus.setText("Not Yet Delivered");
             } else {
-                deliveryStatus.setText("Deliverd");
+
+                DateTimeFormatter FOMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy 'at' hh:mm a");
+
+                LocalDateTime deliveryTime = LocalDateTime.parse(resultSet.getString("deliveryTime"));
+
+                deliveryStatus.setText("Delivered - " + deliveryTime.format(FOMATTER));
             }
 
             resultSet.close();

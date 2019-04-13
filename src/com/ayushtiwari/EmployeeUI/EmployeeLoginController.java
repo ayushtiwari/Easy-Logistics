@@ -113,10 +113,10 @@ public class EmployeeLoginController {
 
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM Employees WHERE userName = '" + employeeUserName + "'");
 
-                if (resultSet.getString(3).equals(employeeUserName) && resultSet.getString(4).equals(employeePassWord)) {
+                if (resultSet.next() && resultSet.getString("userName").equals(employeeUserName) && resultSet.getString("password").equals(employeePassWord)) {
                     detailsCorrect = true;
                 }
-
+                System.out.println("Alphabeta");
                 if (detailsCorrect) {
 
                     TransportData.getInstance().setOfficeId(resultSet.getInt(5));
