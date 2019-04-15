@@ -1,6 +1,7 @@
 //One of the functionalities of a manager is he can add a new truck if he feels so
 //This is achieved by this corresponding class
 //Accordingly, details of truck will be updated in sqlite database
+
 package com.ayushtiwari.ManagerUI;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -37,9 +38,11 @@ public class NewTruckController {
             statement.execute("SELECT * FROM Offices");
             ResultSet results = statement.getResultSet();
 
+
             while (results.next()) {
                 int branchid = results.getInt(1);
-                branch.getItems().add(Integer.toString(branchid));
+                String city = results.getString("city");
+                branch.getItems().add(branchid + " " + city);
             }
 
             results = statement.executeQuery("SELECT * FROM Trucks");
@@ -112,7 +115,7 @@ public class NewTruckController {
                 Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
                 Statement st = conn.createStatement();
 
-                st.execute("INSERT INTO Trucks VALUES (" + Integer.parseInt(truckId.getText()) + "," + Integer.parseInt(branch.getValue()) + "," + "-1" + "," + 0 + "," + Integer.parseInt(capacity.getText()) + ",'" + LocalDateTime.now().toString() + "'," + "'*'" + "," + 0 + ")");
+                st.execute("INSERT INTO Trucks VALUES (" + Integer.parseInt(truckId.getText()) + "," + Integer.parseInt(branch.getValue().trim().split(" ")[0]) + "," + "-1" + "," + 0 + "," + Integer.parseInt(capacity.getText()) + ",'" + LocalDateTime.now().toString() + "'," + "'*'" + "," + 0 + ")");
 
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

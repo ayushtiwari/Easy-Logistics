@@ -49,7 +49,8 @@ public class NewEmployeeController {
             ResultSet results = statement.executeQuery("SELECT * FROM Offices");
             while (results.next()) {
                 int branchid = results.getInt(1);
-                branch.getItems().add(Integer.toString(branchid));
+                String city = results.getString("city");
+                branch.getItems().add(branchid + " " + city);
             }
 
             results = statement.executeQuery("SELECT * FROM Employees");
@@ -146,7 +147,7 @@ public class NewEmployeeController {
                 Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/ayushtiwari/Documents/TransportCompany/TransportDatabase.db");
                 Statement st = conn.createStatement();
 
-                st.execute("INSERT INTO  Employees VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + userName.getText() + "','" + password.getText() + "','" + branch.getValue() + "')");
+                st.execute("INSERT INTO  Employees VALUES('" + employeeId.getText() + "','" + name.getText() + "','" + userName.getText() + "','" + password.getText() + "','" + branch.getValue().trim().split(" ")[0] + "')");
 
 
                 st.close();
@@ -171,9 +172,6 @@ public class NewEmployeeController {
                 alert.setTitle("Failed");
                 alert.showAndWait();
             }
-
-
-
 
         }
     }
