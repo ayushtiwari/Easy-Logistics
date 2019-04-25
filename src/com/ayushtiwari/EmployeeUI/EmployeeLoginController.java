@@ -46,7 +46,8 @@ public class EmployeeLoginController {
             ResultSet results = st.getResultSet();
             while (results.next()) {
                 int branchid = results.getInt(1);
-                branch.getItems().add(Integer.toString(branchid));
+                String branchCity = results.getString("city");
+                branch.getItems().add(branchid + " " + branchCity);
             }
         } catch (SQLException s) {
             System.out.println("Error accessing Database" + s.getMessage());
